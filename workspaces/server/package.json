@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "npm-run-all --parallel prepare:*",
+    "prepare:environment": "run-node ./bin/setup.js",
+    "dev": "npm-run-all start:dev",
+    "start": "npm-run-all start:prod",
+    "start:dev": "nodemon index.js",
+    "start:prod": "run-node index.js",
+    "lint": "eslint ./src --fix",
+    "test": "npm-run-all --sequential lint",
+    "pm2": "pm2"
   },
   "author": "samueleishion",
   "license": "UNLICENSED",
@@ -12,16 +20,23 @@
     "axios": "^1.11.0",
     "body-parser": "^2.2.0",
     "chalk": "^5.4.1",
+    "compression": "^1.8.1",
     "cors": "^2.8.5",
     "crc": "^4.3.2",
     "dotenv": "^17.2.1",
     "esm": "^3.2.25",
     "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "https": "^1.0.0",
+    "logr-js": "github:samueleishion/logr-js",
     "moment": "^2.30.1",
     "mongodb": "^6.18.0",
+    "mongoose": "^8.16.5",
     "pm2": "^6.0.8"
   },
   "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
     "nodemon": "^3.1.10",
     "npm-run-all": "^4.1.5",
     "run-node": "^2.0.0"
