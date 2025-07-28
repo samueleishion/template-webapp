@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "npm-run-all --parallel prepare:*",
+    "prepare:husky": "husky install",
+    "lint": "cd workspaces/server; npm run lint",
+    "test": "exit 0"
   },
   "repository": {
     "type": "git",
@@ -18,5 +21,12 @@
   "homepage": "https://github.com/samueleishion/csuite#readme",
   "workspaces": [
     "workspaces/*"
-  ]
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7",
+    "npm-run-all": "^4.1.5",
+    "run-node": "^2.0.0"
+  }
 }
