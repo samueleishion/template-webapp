@@ -3,6 +3,9 @@
   * These variables define the colors and styles for different button types.
   */
 :root {
+  --cs-button-border-radius: var(--cs-app-border-radius);
+  --cs-button-border-width: var(--cs-app-border-width);
+
   --cs-button-default-background: transparent;
   --cs-button-default-text: var(--cs-action-filled);
   --cs-button-default-hover: var(--cs-action-filled-hover);
@@ -35,7 +38,7 @@
 .cs-button {
   background-color: var(--cs-button-default-background);
   color: var(--cs-button-default-text);
-  border-radius: 8px;
+  border-radius: var(--cs-button-border-radius);
   border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;

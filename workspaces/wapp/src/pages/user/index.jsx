@@ -1,3 +1,9 @@
+import React, { useContext } from 'react';
+
+/* Global State */
+import useAppState, { actionTypes } from '../../data/app-state';
+
+/* Shared Components */
 import Button from '../../components/button';
 import Footer from '../../components/footer';
 import Layout, { 
@@ -14,9 +20,12 @@ import Nav, {
   NavUser
 } from '../../components/nav';
 
+/* Assets */
 import appLogo from '../../assets/logo.svg';
 
 const User = () => {
+  const [appState, dispatch] = useContext(useAppState);
+
   return (
     <Layout>
       <LayoutHeader>
@@ -39,18 +48,7 @@ const User = () => {
         <LayoutContent>
           <h1>User Page</h1>
           <p>This is the user page content.</p>
-          <Login render={(userSession, login, logout) => (
-            <div>
-              {userSession ? (
-                <p>Welcome, {userSession.name}!</p>
-              ) : (
-                <p>Please log in to continue.</p>
-              )}
-              <Button variant="outlined" onClick={userSession ? logout : login}>
-                {userSession ? 'Log out' : 'Log in'}
-              </Button>
-            </div>
-          )} />
+          <p>Welcome, {appState.userSession.name}!</p>
         </LayoutContent>
       </LayoutMain>
       <LayoutFooter>

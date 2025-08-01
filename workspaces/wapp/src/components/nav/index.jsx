@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
+import { useFloating, useInteractions, useClick, offset, flip, shift } from '@floating-ui/react';
 
 /* Global State */
 import useAppState from '../../data/app-state';
 
 /* Shared Components */
 import Avatar from '../avatar';
+import Button from '../button';
+import Card from '../card';
+import Login from '../login';
+import Link from '../link';
 
 /* Assets */
 import LeonardoDavinci from '../../assets/leonardo-davinci.jpg';
@@ -26,20 +31,36 @@ const NavLogo = ({ src, alt, ...props }) => {
 
 const NavLinks = ({ children, ...props }) => {
   return (
-    <ul
-      {...props}
-      className={[
-        "cs-nav-links",
-        props.className || ''
-      ].join(' ').trim()}
-    >
-      {children}
-    </ul>
+    <nav className="cs-nav-links-container">
+      <ul
+        {...props}
+        className={[
+          "cs-nav-links",
+          props.className || ''
+        ].join(' ').trim()}
+      >
+        {children}
+      </ul>
+    </nav>
   );
 }
 
-const NavUser = ({ userSession, login, logout, ...props }) => {
+const NavUser = ({ ...props }) => {
   const [appState, dispatch] = useContext(useAppState);
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  const { refs, floatingStyles, context } = useFloating({
+    open: isExpanded,
+    onOpenChange: setIsExpanded,
+    placement: 'bottom-end',
+    middleware: [offset(12), flip(), shift()],
+  })
+
+  const click = useClick(context);
+  const {getReferenceProps, getFloatingProps} = useInteractions([
+    click,
+  ]);
+
   return (
     <div
       {...props}
@@ -49,14 +70,38 @@ const NavUser = ({ userSession, login, logout, ...props }) => {
       ].join(' ').trim()}
     >
       <Avatar
-        tag={<button 
-          onClick={appState.userSession ? logout : login} 
+        tag={<Button
+          variant="outlined" 
           aria-label={appState.userSession ? "log out" : "log in"} 
         />}
         src={appState.userSession?.picture || LeonardoDavinci}
         alt={appState.userSession?.name || 'User Avatar'}
         size="medium"
+        ref={refs.setReference} {...getReferenceProps()}
       />
+      {isExpanded && (
+        <Card
+          ref={refs.setFloating}
+          className="cs-nav-user-dropdown"
+          style={floatingStyles}
+          {...getFloatingProps()}
+        >
+          <ul>
+            {appState.userSession && (
+              <li>
+                <Link href="/settings/profile">Settings</Link>
+              </li>
+            )}
+            <li>
+              <Login render={(userSession, login, logout) => (
+                <Button variant="outlined" onClick={userSession ? logout : login}>
+                  {userSession ? 'Log out' : 'Log in'}
+                </Button>
+              )} />
+            </li>
+          </ul>
+        </Card>
+      )}
     </div>
   );
 }
@@ -68,7 +113,7 @@ const Nav = ({
   ...props
 }) => {
   return (
-    <nav
+    <div
       {...props}
       className={[
         "cs-nav",
@@ -76,7 +121,7 @@ const Nav = ({
       ].join(' ').trim()}
     >
       {children}
-    </nav>
+    </div>
   );
 };
 

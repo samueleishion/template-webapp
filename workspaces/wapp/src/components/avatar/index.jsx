@@ -1,18 +1,20 @@
 import { cloneElement } from 'react'
 import './styles.css'
 
-const Avatar = ({ tag=<img />, src, alt, size = 'medium', ...props }) => {
+const Avatar = ({ tag=<img />, src, alt, size = 'medium', onClick=() => {}, ...props }) => {
+
   return (
     cloneElement(tag, {
       ...props,
-      src,
-      alt,
+      src: tag.type === "img" ? src : undefined,
+      alt: tag.type === "img" ? alt : undefined,
+      style: tag.type !== "img" ? { backgroundImage: `url(${src})` } : undefined,
       className: [
         "cs-avatar",
         `cs-avatar-${size}`,
         props.className || ''
       ].join(' ').trim(),
-      style: { backgroundImage: `url(${src})` }
+      onClick: onClick
     })
   )
 }

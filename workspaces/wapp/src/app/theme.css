@@ -50,14 +50,15 @@
   --cs-action-filled-active: light-dark(var(--cs-color-primary-dark), var(--cs-color-primary-dark));  
   --cs-action-filled-disabled: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
 
+  --cs-app-animation-duration: 0.1s;
   --cs-app-background: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-darkerer));
+  --cs-app-border-color: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
+  --cs-app-border-radius: 4px;
+  --cs-app-border-width: 1px;
+  --cs-app-box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.2);
   --cs-app-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-lighter));
   --cs-app-font-family: system-ui, sans-serif;
-  /* --cs-app-border-radius: 4px; */
-  --cs-app-border-width: 1px;
-  --cs-app-border-color: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
   --cs-app-font-size: 16px;
   --cs-app-font-weight: 400;
   --cs-app-line-height: 1.5;
-  --cs-app-animation-duration: 0.1s;
 }

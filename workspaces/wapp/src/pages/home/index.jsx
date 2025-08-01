@@ -40,52 +40,20 @@ const Home = ({ children }) => {
                 <Link href="/about">About</Link>
               </li>
             </NavLinks>
+            <Login render={(userSession, login, logout) => (
+              <Button variant="default" size="small" onClick={userSession ? logout : login}>
+                {userSession ? 'Log out' : 'Log in'}
+              </Button>
+            )} />
           </LayoutContent>
         </Nav>
       </LayoutHeader>
       <LayoutMain>
         <LayoutContent>
           <h1>C-Suite</h1>
-          <h2>Login</h2>
           <img src={appLogo} className="logo" alt="App Logo" />
           <div className="card">
             {children}
-            {/* Login form */}
-            <Login render={(userSession, login, logout) => (
-              <div>
-                {userSession ? (
-                  <p>Welcome, {userSession.name}!</p>
-                ) : (
-                  <p>Please log in to continue.</p>
-                )}
-                <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '20px' }}>
-                  <Button variant="default" onClick={userSession ? logout : login}>
-                    {userSession ? 'Log out' : 'Log in'}
-                  </Button>
-                  <Button variant="outlined" onClick={userSession ? logout : login}>
-                    {userSession ? 'Log out' : 'Log in'}
-                  </Button>
-                  <Button variant="filled" onClick={userSession ? logout : login}>
-                    {userSession ? 'Log out' : 'Log in'}
-                  </Button>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '20px' }}>
-                  <Button disabled variant="default" onClick={userSession ? logout : login}>
-                    {userSession ? 'Log out' : 'Log in'}
-                  </Button>
-                  <Button disabled variant="outlined" onClick={userSession ? logout : login}>
-                    {userSession ? 'Log out' : 'Log in'}
-                  </Button>
-                  <Button disabled variant="filled" onClick={userSession ? logout : login}>
-                    {userSession ? 'Log out' : 'Log in'}
-                  </Button>
-                </div>
-              </div>
-            )} />
-          </div>
-          <div className="card">
-            userSession: {JSON.stringify(appState.userSession)}<br />
-            supervisedSession: {JSON.stringify(appState.supervisedSession)}<br />
           </div>
         </LayoutContent>
       </LayoutMain>
