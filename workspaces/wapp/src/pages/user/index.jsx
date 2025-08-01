@@ -1,3 +1,4 @@
+import Button from '../../components/button';
 import Footer from '../../components/footer';
 import Layout, { 
   LayoutContent, 
@@ -5,17 +6,34 @@ import Layout, {
   LayoutHeader, 
   LayoutMain
 } from '../../components/layout';
+import Link from '../../components/link';
 import Login from '../../components/login';
+import Nav, {
+  NavLogo,
+  NavLinks,
+  NavUser
+} from '../../components/nav';
+
+import appLogo from '../../assets/logo.svg';
 
 const User = () => {
   return (
     <Layout>
       <LayoutHeader>
-        <nav>
-          <LayoutContent>
-            nav
+        <Nav>
+          <LayoutContent className="cs-nav-content">
+            <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" />
+            <NavLinks>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/about">About</Link>
+              </li>
+            </NavLinks>
+            <NavUser />
           </LayoutContent>
-        </nav>
+        </Nav>
       </LayoutHeader>
       <LayoutMain>
         <LayoutContent>
@@ -28,9 +46,9 @@ const User = () => {
               ) : (
                 <p>Please log in to continue.</p>
               )}
-              <button onClick={userSession ? logout : login}>
+              <Button variant="outlined" onClick={userSession ? logout : login}>
                 {userSession ? 'Log out' : 'Log in'}
-              </button>
+              </Button>
             </div>
           )} />
         </LayoutContent>

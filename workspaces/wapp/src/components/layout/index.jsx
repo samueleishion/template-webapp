@@ -34,7 +34,14 @@ const LayoutFooter = ({ children, ...props }) => {
 
 const LayoutContent = ({ children, wide=false, ...props }) => {
   return (
-    <div className={`cs-layout-content ${wide ? 'cs-layout-content-wide' : ''}`} {...props}>
+    <div 
+      {...props}
+      className={[
+        `cs-layout-content`,
+        wide ? 'cs-layout-content-wide' : '',
+        props.className
+      ].join(' ').trim()} 
+    >
       {children}
     </div>
   );

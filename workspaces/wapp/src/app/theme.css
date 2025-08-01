@@ -53,6 +53,9 @@
   --cs-app-background: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-darkerer));
   --cs-app-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-lighter));
   --cs-app-font-family: system-ui, sans-serif;
+  /* --cs-app-border-radius: 4px; */
+  --cs-app-border-width: 1px;
+  --cs-app-border-color: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
   --cs-app-font-size: 16px;
   --cs-app-font-weight: 400;
   --cs-app-line-height: 1.5;

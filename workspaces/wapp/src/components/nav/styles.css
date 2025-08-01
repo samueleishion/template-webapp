@@ -1,0 +1,77 @@
+:root {
+  --cs-nav-gap: 12px;
+  --cs-nav-links-gap: 18px;
+  --cs-nav-links-justify-content: flex-start; 
+  --cs-nav-links-a-color: var(--cs-color-grays-light);
+  --cs-nav-links-a-hover-color: var(--cs-action-filled-hover);
+  --cs-nav-links-a-focus-color: var(--cs-action-filled-focus);
+  --cs-nav-links-a-active-color: var(--cs-action-filled-active);
+}
+
+.cs-nav {
+  /* Add nav-specific styles here if needed */
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  inline-size: 100%;
+  block-size: 66px;
+  max-block-size: 66px;
+  background-color: var(--cs-color-grays-darkest);
+  gap: var(--cs-nav-gap);
+}
+
+.cs-nav-content {
+  display: inline-flex; 
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cs-nav-gap);
+}
+
+.cs-nav-logo {
+  display: flex; 
+  align-items: center;
+  padding-inline: 16px;
+}
+
+.cs-nav-links {
+  display: flex; 
+  flex-direction: row;
+  justify-content: var(--cs-nav-links-justify-content);
+  align-items: center;
+  flex-grow: 1;
+  gap: var(--cs-nav-links-gap);
+  margin-block: 0px;
+  padding-inline: 0px;
+}
+
+.cs-nav-links li {
+  list-style: none; 
+}
+
+.cs-nav-links a {
+  color: var(--cs-nav-links-a-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cs-nav-links a:hover {
+  color: var(--cs-nav-links-a-hover-color);
+  text-decoration: none;
+}
+
+.cs-nav-links a:focus-visible {
+  color: var(--cs-nav-links-a-focus-color);
+  text-decoration: none;
+}
+
+.cs-nav-links a:active {
+  color: var(--cs-nav-links-a-active-color);
+  text-decoration: none;
+}
+
+.cs-nav-user {
+  display: flex; 
+  align-items: center;
+  padding-inline: 16px;
+}

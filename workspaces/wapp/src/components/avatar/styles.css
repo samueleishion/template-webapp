@@ -1,0 +1,40 @@
+:root {
+  --cs-avatar-block-size: 40px;
+  --cs-avatar-inline-size: 40px;
+  --cs-avatar-border-radius: 9999px;
+  --cs-avatar-border-color: var(--cs-app-border-color, transparent);
+  --cs-avatar-border-width: var(--cs-app-border-width, 0px);
+}
+
+.cs-avatar {
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  block-size: var(--cs-avatar-block-size, 40px);
+  inline-size: var(--cs-avatar-inline-size, 40px);
+  border-radius: var(--cs-avatar-border-radius, 9999px);
+  background-color: transparent;
+  color: var(--cs-avatar-color, #333);
+  font-size: var(--cs-avatar-font-size, 1em);
+  font-weight: var(--cs-avatar-font-weight, bold);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: var(--cs-avatar-border-width, 0px) solid var(--cs-avatar-border-color, transparent);
+}
+
+button.cs-avatar,
+a.cs-avatar {
+  cursor: pointer;
+}
+
+.cs-avatar-small {
+  --cs-avatar-size: 30px;
+  --cs-avatar-font-size: 0.8em;
+}
+
+.cs-avatar-large {
+  --cs-avatar-size: 50px;
+  --cs-avatar-font-size: 1.2em;
+}

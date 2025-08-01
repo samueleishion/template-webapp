@@ -11,21 +11,6 @@
   fill: currentColor;
 }
 
-a {
-  font-weight: 500;
-  color: var(--cs-action-filled);
-  text-decoration: inherit;
-}
-
-a:hover,
-a:focus-visible {
-  color: var(--cs-action-filled-hover);
-}
-
-a:active {
-  color: var(--cs-action-filled-active);
-}
-
 html,
 body {
   color-scheme: light dark; 
@@ -51,3 +36,8 @@ h1 {
   margin: 0px; 
 }
 
+hr {
+  border: none;
+  border-top: var(--cs-app-border-width) solid var(--cs-app-border-color);
+  margin: 1em 0;
+}

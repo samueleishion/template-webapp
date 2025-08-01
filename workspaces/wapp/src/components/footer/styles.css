@@ -1,8 +1,8 @@
 :root {
   --cs-footer-background: transparent;
   --cs-footer-text-color: currentColor;
-  --cs-footer-border-width: 1px;
-  --cs-footer-border-color: #dee2e6;
+  --cs-footer-border-width: var(--cs-app-border-width);
+  --cs-footer-border-color: var(--cs-app-border-color);
 }
 
 .cs-footer {

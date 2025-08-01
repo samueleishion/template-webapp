@@ -13,6 +13,12 @@ import Layout, {
   LayoutHeader, 
   LayoutMain
 } from '../../components/layout';
+import Link from '../../components/link';
+import Nav, {
+  NavLogo,
+  NavLinks,
+  NavUser
+} from '../../components/nav';
 
 /* Assets */ 
 import appLogo from '../../assets/logo.svg';
@@ -23,11 +29,19 @@ const Home = ({ children }) => {
   return (
     <Layout>
       <LayoutHeader>
-        <nav>
-          <LayoutContent>
-            nav 
+        <Nav>
+          <LayoutContent className="cs-nav-content">
+            <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" />
+            <NavLinks>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/about">About</Link>
+              </li>
+            </NavLinks>
           </LayoutContent>
-        </nav>
+        </Nav>
       </LayoutHeader>
       <LayoutMain>
         <LayoutContent>

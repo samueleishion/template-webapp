@@ -1,0 +1,31 @@
+:root {
+  --cs-link-color: var(--cs-action-filled);
+  --cs-link-hover-color: var(--cs-action-filled-hover);
+  --cs-link-focus-color: var(--cs-action-filled-focus);
+  --cs-link-active-color: var(--cs-action-filled-active);
+  --cs-link-text-decoration: none;
+  --cs-link-hover-text-decoration: underline;
+  --cs-link-focus-text-decoration: underline;
+  --cs-link-active-text-decoration: underline;
+}
+
+.cs-link {
+  font-weight: 500;
+  color: var(--cs-action-filled);
+  text-decoration: var(--cs-link-text-decoration);
+}
+
+.cs-link:hover {
+  color: var(--cs-action-filled-hover);
+  text-decoration: var(--cs-link-hover-text-decoration);
+}
+
+.cs-link:focus-visible {
+  color: var(--cs-action-filled-focus);
+  text-decoration: var(--cs-link-focus-text-decoration);
+}
+
+.cs-link:active {
+  color: var(--cs-action-filled-active);
+  text-decoration: var(--cs-link-active-text-decoration);
+}
