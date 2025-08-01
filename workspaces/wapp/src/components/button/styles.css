@@ -1,0 +1,130 @@
+/* 
+  * Button Component Variables
+  * These variables define the colors and styles for different button types.
+  */
+:root {
+  --cs-button-default-background: transparent;
+  --cs-button-default-text: var(--cs-action-filled);
+  --cs-button-default-hover: var(--cs-action-filled-hover);
+  --cs-button-default-focus: var(--cs-action-filled-focus);
+  --cs-button-default-active: var(--cs-action-filled-active);
+  --cs-button-default-disabled: var(--cs-action-filled-disabled);
+
+  --cs-button-outlined-background: transparent;
+  --cs-button-outlined-border: var(--cs-action-filled);
+  --cs-button-outlined-text: var(--cs-action-filled);
+  --cs-button-outlined-hover-border: var(--cs-action-filled-hover);
+  --cs-button-outlined-focus-border: var(--cs-action-filled-focus);
+  --cs-button-outlined-active-border: var(--cs-action-filled-active); 
+  --cs-button-outlined-disabled-border: var(--cs-action-filled-disabled);
+
+  --cs-button-filled-background: var(--cs-action-filled);
+  --cs-button-filled-text: var(--cs-action-filled-text);
+  --cs-button-filled-hover: var(--cs-action-filled-hover);
+  --cs-button-filled-focus: var(--cs-action-filled-focus);
+  --cs-button-filled-active: var(--cs-action-filled-active);
+  --cs-button-filled-disabled: var(--cs-action-filled-disabled);
+}
+
+/* 
+  * Button Component Styles
+  * These styles apply to the button component, including default, outlined, and filled styles.
+  */
+  
+/* default button */ 
+.cs-button {
+  background-color: var(--cs-button-default-background);
+  color: var(--cs-button-default-text);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  /* background-color: #1a1a1a; */
+  cursor: pointer;
+  transition: all var(--cs-app-animation-duration);
+}
+
+.cs-button:hover {
+  color: var(--cs-button-default-hover);
+}
+
+.cs-button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+  color: var(--cs-button-default-focus);
+}
+
+.cs-button:active {
+  color: var(--cs-button-default-active);
+}
+
+.cs-button:disabled {
+  color: var(--cs-button-default-disabled);
+  pointer-events: none; 
+  cursor: not-allowed;
+}
+
+/* 
+  * Button Variants
+  * These styles apply to the different button variants: default, outlined, and filled.
+  */
+/* outlined button */ 
+.cs-button-outlined {
+  background-color: var(--cs-button-outlined-background);
+  color: var(--cs-button-outlined-text);
+  border-color: var(--cs-button-outlined-border);
+}
+
+.cs-button-outlined:hover {
+  border-color: var(--cs-button-outlined-hover-border);
+}
+
+.cs-button-outlined:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+  border-color: var(--cs-button-outlined-focus-border);
+}
+
+.cs-button-outlined:active {
+  border-color: var(--cs-button-outlined-active-border);
+}
+
+.cs-button-outlined:disabled {
+  border-color: var(--cs-button-outlined-disabled-border);
+  pointer-events: none; 
+  cursor: not-allowed;
+}
+
+/* filled button */ 
+.cs-button-filled {
+  background-color: var(--cs-button-filled-background);
+  border-color: var(--cs-button-filled-background); 
+  color: var(--cs-button-filled-text);
+}
+
+.cs-button-filled:hover {
+  background-color: var(--cs-button-filled-hover);
+  border-color: var(--cs-button-filled-hover);
+  color: var(--cs-button-filled-text);
+}
+
+.cs-button-filled:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+  background-color: var(--cs-button-filled-focus);
+  border-color: var(--cs-button-filled-focus);
+  color: var(--cs-button-filled-text);
+}
+
+.cs-button-filled:active {
+  background-color: var(--cs-button-filled-active);
+  border-color: var(--cs-button-filled-active);
+  color: var(--cs-button-filled-text);
+}
+
+.cs-button-filled:disabled {
+  background-color: var(--cs-button-filled-disabled);
+  border-color: var(--cs-button-filled-disabled);
+  pointer-events: none; 
+  cursor: not-allowed;
+  color: var(--cs-button-filled-text);
+}

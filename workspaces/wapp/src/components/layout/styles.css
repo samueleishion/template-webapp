@@ -1,0 +1,35 @@
+.cs-layout {
+  display: grid; 
+  grid-template-columns: 1fr;
+  grid-template-rows: 66px auto 66px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  gap: 12px; 
+}
+
+.cs-layout-header {
+  grid-area: header;
+}
+
+.cs-layout-main {
+  grid-area: main;
+}
+
+.cs-layout-footer {
+  grid-area: footer;
+}
+
+.cs-layout-content {
+  margin: 0 auto ;
+  max-inline-size: 1200px;
+  inline-size: 100%;
+}
+
+.cs-layout-content-wide {
+  max-inline-size: 100vw;
+}

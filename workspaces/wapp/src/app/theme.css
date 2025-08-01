@@ -1,0 +1,60 @@
+:root {
+  --cs-color-primary-lighter: #c9ebf1;
+  --cs-color-primary-light: #8be8e1;
+  --cs-color-primary: #64d7c3; 
+  --cs-color-primary-dark: #59b3a9; 
+  --cs-color-primary-darker: #3f847b; 
+
+  --cs-color-secondary: rgb(93, 161, 248);
+  --cs-color-tertiary: rgb(179, 136, 245);
+  --cs-color-alternate: rgb(215, 108, 163); 
+
+  --cs-color-grays-lightest: #f3f2f0;
+  --cs-color-grays-lighterest: #e2e1de; 
+  --cs-color-grays-lighter: #dbdad9;
+  --cs-color-grays-light: #cccbc9;
+  --cs-color-grays: #afaeac;
+  --cs-color-grays-dark: #7a7979;
+  --cs-color-grays-darker: #282827;
+  --cs-color-grays-darkerer: #141413;
+  --cs-color-grays-darkest: #0f0f0e;
+
+  --cs-message-positive-lighter: #c9f2cb;
+  --cs-message-positive-light: #89e594;
+  --cs-message-positive: #63d880; 
+  --cs-message-positive-dark: #59b272;
+  --cs-message-positive-darker: #3f8458; 
+
+  --cs-message-negative-lighter: #f1c9c9;
+  --cs-message-negative-light: #e88989;
+  --cs-message-negative: #d86363;
+  --cs-message-negative-dark: #b25959;
+  --cs-message-negative-darker: #845f3f;
+
+  --cs-message-warning-lighter: #f2e0c9;
+  --cs-message-warning-light: #e5c889;
+  --cs-message-warning: #d8b263;
+  --cs-message-warning-dark: #b27259;
+  --cs-message-warning-darker: #845f3f;
+
+  --cs-message-info-lighter: #c9f2ef;
+  --cs-message-info-light: #89e5e5;
+  --cs-message-info: #63d8d8;
+  --cs-message-info-dark: #59b2b2;
+  --cs-message-info-darker: #3f8484;
+
+  --cs-action-filled-text: var(--cs-color-grays-darker); 
+  --cs-action-filled: var(--cs-color-primary);
+  --cs-action-filled-hover: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
+  --cs-action-filled-focus: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
+  --cs-action-filled-active: light-dark(var(--cs-color-primary-dark), var(--cs-color-primary-dark));  
+  --cs-action-filled-disabled: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
+
+  --cs-app-background: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-darkerer));
+  --cs-app-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-lighter));
+  --cs-app-font-family: system-ui, sans-serif;
+  --cs-app-font-size: 16px;
+  --cs-app-font-weight: 400;
+  --cs-app-line-height: 1.5;
+  --cs-app-animation-duration: 0.1s;
+}

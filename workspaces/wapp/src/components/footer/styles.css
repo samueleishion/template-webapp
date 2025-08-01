@@ -1,0 +1,19 @@
+:root {
+  --cs-footer-background: transparent;
+  --cs-footer-text-color: currentColor;
+  --cs-footer-border-width: 1px;
+  --cs-footer-border-color: #dee2e6;
+}
+
+.cs-footer {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between;
+  align-items: center;
+  inline-size: 100%; 
+  block-size: 60px; 
+  padding: 0px;
+  background-color: var(--cs-footer-background);
+  color: var(--cs-footer-text-color);
+  border-top: var(--cs-footer-border-width) solid var(--cs-footer-border-color);
+}

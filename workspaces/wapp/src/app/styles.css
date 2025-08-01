@@ -1,0 +1,53 @@
+[data-theme='dark'] {
+  color-scheme: dark; 
+}
+
+[data-theme='light'] {
+  color-scheme: light; 
+}
+
+.logo {
+  color: currentColor;
+  fill: currentColor;
+}
+
+a {
+  font-weight: 500;
+  color: var(--cs-action-filled);
+  text-decoration: inherit;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--cs-action-filled-hover);
+}
+
+a:active {
+  color: var(--cs-action-filled-active);
+}
+
+html,
+body {
+  color-scheme: light dark; 
+
+  background-color: var(--cs-app-background);
+  color: var(--cs-app-color);
+  font-family: var(--cs-app-font-family); 
+  font-size: var(--cs-app-font-size);
+  font-weight: var(--cs-app-font-weight);
+  line-height: var(--cs-app-line-height);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0px;
+  padding: 0px;
+  block-size: 100vh;
+  inline-size: 100vw;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin: 0px; 
+}
+

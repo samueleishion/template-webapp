@@ -1,0 +1,146 @@
+/* 
+  * Alert Component Variables
+  * These variables define the colors and styles for different alert types.
+  */
+:root {
+  --cs-alert-success-background: var(--cs-message-positive);
+  --cs-alert-success-color: var(--cs-color-grays-darker);
+  --cs-alert-success-button-background: var(--cs-message-positive-light);
+  --cs-alert-success-button-color: var(--cs-color-grays-darker);
+  --cs-alert-success-button-hover-background: var(--cs-message-positive-lighter);
+  --cs-alert-success-button-hover-color: var(--cs-color-grays-darker);
+  --cs-alert-success-button-active-background: var(--cs-message-positive-dark);
+
+  --cs-alert-error-background: light-dark(var(--cs-message-negative-lighter), var(--cs-message-negative));
+  --cs-alert-error-color: var(--cs-color-grays-darker);
+  --cs-alert-error-button-background: light-dark(var(--cs-message-negative-light), var(--cs-message-negative-light));
+  --cs-alert-error-button-color: var(--cs-color-grays-darker);
+  --cs-alert-error-button-hover-background: light-dark(var(--cs-message-negative), var(--cs-message-negative-lighter));
+  --cs-alert-error-button-hover-color: var(--cs-color-grays-darker);
+  --cs-alert-error-button-active-background: light-dark(var(--cs-message-negative-dark), var(--cs-message-negative-dark));
+
+  --cs-alert-warning-background: var(--cs-message-warning);
+  --cs-alert-warning-color: var(--cs-color-grays-darker);
+  --cs-alert-warning-button-background: var(--cs-message-warning-light);
+  --cs-alert-warning-button-color: var(--cs-color-grays-darker);
+  --cs-alert-warning-button-hover-background: var(--cs-message-warning-lighter);
+  --cs-alert-warning-button-hover-color: var(--cs-color-grays-darker);
+  --cs-alert-warning-button-active-background: var(--cs-message-warning-dark);
+
+  --cs-alert-info-background: light-dark(var(--cs-message-info-lighter), var(--cs-message-info));
+  --cs-alert-info-color: var(--cs-color-grays-darker);
+  --cs-alert-info-button-background: light-dark(var(--cs-message-info-light), var(--cs-message-info-light));
+  --cs-alert-info-button-color: var(--cs-color-grays-darker);
+  --cs-alert-info-button-hover-background: light-dark(var(--cs-message-info), var(--cs-message-info-lighter));
+  --cs-alert-info-button-hover-color: var(--cs-color-grays-darker);
+  --cs-alert-info-button-active-background: var(--cs-message-info-dark);
+}
+
+/* 
+  * Alert Component Styles
+  * These styles apply to the alert component, including positioning, padding, and button styles.
+  */
+.cs-alert {
+  position: fixed;
+  top: 81px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px 15px 10px 20px;
+  border-radius: 6px;
+  color: var(--cs-alert-info-color);
+  background-color: var(--cs-alert-info-background); 
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px; 
+}
+
+.cs-alert .cs-button {
+  margin: 0px; 
+  padding: 3px;
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  color: var(--cs-alert-info-button-color);
+  background-color: var(--cs-alert-info-button-background);
+}
+
+/* 
+  * Alert Variants
+  * These classes can be used to apply different styles based on the alert type.
+  */
+
+/* Success Alert */
+.cs-alert-success {
+  background-color: var(--cs-alert-success-background);
+  color: var(--cs-alert-success-color)
+} 
+.cs-alert-success .cs-button {
+  background-color: var(--cs-alert-success-button-background);
+  color: var(--cs-alert-success-button-color);
+}
+.cs-alert-success .cs-button:hover {
+  background-color: var(--cs-alert-success-button-hover-background);
+  color: var(--cs-alert-success-button-hover-color);
+}
+.cs-alert-success .cs-button:active {
+  background-color: var(--cs-alert-success-button-active-background);
+  color: var(--cs-alert-success-button-hover-color);
+}
+
+/* Error Alert */
+.cs-alert-error {
+  background-color: var(--cs-alert-error-background);
+  color: var(--cs-alert-error-color);
+}
+.cs-alert-error .cs-button {
+  background-color: var(--cs-alert-error-button-background);
+  color: var(--cs-alert-error-button-color);
+}
+.cs-alert-error .cs-button:hover {
+  background-color: var(--cs-alert-error-button-hover-background);
+  color: var(--cs-alert-error-button-hover-color);
+}
+.cs-alert-error .cs-button:active {
+  background-color: var(--cs-alert-error-button-active-background);
+  color: var(--cs-alert-error-button-hover-color);
+}
+
+/* Warning Alert */
+.cs-alert-warning {
+  background-color: var(--cs-alert-warning-background);
+  color: var(--cs-alert-warning-color);
+}
+.cs-alert-warning .cs-button {
+  background-color: var(--cs-alert-warning-button-background);
+  color: var(--cs-alert-warning-button-color);
+}
+.cs-alert-warning .cs-button:hover {
+  background-color: var(--cs-alert-warning-button-hover-background);
+  color: var(--cs-alert-warning-button-hover-color);
+}
+.cs-alert-warning .cs-button:active {
+  background-color: var(--cs-alert-warning-button-active-background);
+  color: var(--cs-alert-warning-button-hover-color);
+}
+
+/* Info Alert */
+.cs-alert-info {
+  background-color: var(--cs-alert-info-background);
+  color: var(--cs-alert-info-color);
+}
+.cs-alert-info .cs-button {
+  background-color: var(--cs-alert-info-button-background);
+  color: var(--cs-alert-info-button-color);
+}
+.cs-alert-info .cs-button:hover {
+  background-color: var(--cs-alert-info-button-hover-background);
+  color: var(--cs-alert-info-button-hover-color);
+}
+.cs-alert-info .cs-button:active {
+  background-color: var(--cs-alert-info-button-active-background);
+  color: var(--cs-alert-info-button-hover-color);
+}

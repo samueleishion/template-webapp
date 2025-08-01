@@ -1,0 +1,54 @@
+:root {
+  --cs-loading-background: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkest));
+  --cs-loading-bar-color: linear-gradient(90deg, 
+    var(--cs-color-primary), 
+    var(--cs-color-secondary)
+  );
+  --cs-loading-bar-glow: var(--cs-color-primary-light);
+  --cs-loading-bar-height: 6px;
+  --cs-loading-bar-width: 240px;
+}
+
+.cs-loading {
+  display: block; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--cs-loading-bar-height);
+  background-color: var(--cs-loading-background);
+  z-index: 1000;
+}
+
+.cs-loading::after {
+  content: ' '; 
+  display: block; 
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: var(--cs-loading-bar-width);
+  height: var(--cs-loading-bar-height);
+  background: var(--cs-loading-bar-color);
+  box-shadow: 0px 0px 18px 1px var(--cs-loading-bar-glow);
+  box-sizing: border-box;
+  border-radius: 99999px;
+  animation: loading calc(21 * var(--cs-app-animation-duration)) linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: calc(-1 * var(--cs-loading-bar-width));
+    /* left: 0px;  */
+  }
+
+  50% {
+    /* left: calc(100% - var(--cs-loading-bar-width)); */
+    left: 0px;
+    width: 100%;
+  } 
+
+  100% {
+    left: calc(100% + var(--cs-loading-bar-width));
+    /* left: 0px;  */
+  }
+}
