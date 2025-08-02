@@ -1,16 +1,19 @@
 :root {
-  --cs-nav-background-color: var(--cs-color-grays-darkest);
+  --cs-nav-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkest));
+  --cs-nav-border-width: var(--cs-app-border-width);
+  --cs-nav-border-color: var(--cs-app-border-color);
   --cs-nav-gap: 12px;
   --cs-nav-links-gap: 18px;
   --cs-nav-links-justify-content: flex-start; 
-  --cs-nav-links-a-color: var(--cs-color-grays-light);
-  --cs-nav-links-a-hover-color: var(--cs-action-filled-hover);
-  --cs-nav-links-a-focus-color: var(--cs-action-filled-focus);
-  --cs-nav-links-a-active-color: var(--cs-action-filled-active);
+  /* --cs-nav-links-a-color: light-dark(var(--cs-), var(--cs-color-grays-light)); */
+  --cs-nav-links-a-color: var(--cs-app-color);
+  --cs-nav-links-a-hover-color: var(--cs-action-hover);
+  --cs-nav-links-a-focus-color: var(--cs-action-focus);
+  --cs-nav-links-a-active-color: var(--cs-action-active);
 }
 
 .cs-nav {
-  /* Add nav-specific styles here if needed */
+  border-block-end: var(--cs-footer-border-width) solid var(--cs-footer-border-color);
   display: flex; 
   flex-direction: row;
   justify-content: space-between;
@@ -20,6 +23,27 @@
   max-block-size: 66px;
   background-color: var(--cs-nav-background-color);
   gap: var(--cs-nav-gap);
+}
+
+.cs-nav a {
+  color: var(--cs-nav-links-a-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cs-nav a:hover {
+  color: var(--cs-nav-links-a-hover-color);
+  text-decoration: none;
+}
+
+.cs-nav a:focus-visible {
+  color: var(--cs-nav-links-a-focus-color);
+  text-decoration: none;
+}
+
+.cs-nav a:active {
+  color: var(--cs-nav-links-a-active-color);
+  text-decoration: none;
 }
 
 .cs-nav-content {
@@ -56,27 +80,6 @@
   list-style: none; 
 }
 
-.cs-nav-links a {
-  color: var(--cs-nav-links-a-color);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.cs-nav-links a:hover {
-  color: var(--cs-nav-links-a-hover-color);
-  text-decoration: none;
-}
-
-.cs-nav-links a:focus-visible {
-  color: var(--cs-nav-links-a-focus-color);
-  text-decoration: none;
-}
-
-.cs-nav-links a:active {
-  color: var(--cs-nav-links-a-active-color);
-  text-decoration: none;
-}
-
 .cs-nav-user {
   display: flex; 
   align-items: center;
@@ -98,4 +101,33 @@
 
 .cs-nav-user-dropdown li {
   list-style: none; 
+  display: flex; 
+  align-items: center;
+  flex-direction: row; 
+  justify-content: flex-end;
+  border-radius: var(--cs-app-border-radius);
+}
+
+.cs-nav-user-dropdown li a,
+.cs-nav-user-dropdown li button {
+  display: flex;
+  flex-grow: 1;  
+  align-items: center;
+  flex-direction: row; 
+  justify-content: space-between;
+  padding: 3px 6px;
+  gap: 6px; 
+  border-radius: var(--cs-app-border-radius);
+}
+
+.cs-nav-user-dropdown li a:hover,
+.cs-nav-user-dropdown li button:hover {
+  background-color: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-darker));
+  text-decoration: none;
+}
+
+.cs-nav-user-dropdown li a svg,
+.cs-nav-user-dropdown li button svg {
+  width: 0.9em;
+  height: 0.9em;
 }

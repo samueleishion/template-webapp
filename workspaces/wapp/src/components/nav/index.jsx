@@ -3,6 +3,7 @@ import { useFloating, useInteractions, useClick, offset, flip, shift } from '@fl
 
 /* Global State */
 import useAppState from '../../data/app-state';
+import useLocalState from '../../data/local-state';
 
 /* Shared Components */
 import Avatar from '../avatar';
@@ -12,6 +13,10 @@ import Login from '../login';
 import Link from '../link';
 
 /* Assets */
+import {
+  LogOut, 
+  Settings as SettingsIcon
+} from 'iconoir-react';
 import LeonardoDavinci from '../../assets/leonardo-davinci.jpg';
 import './styles.css';
 
@@ -89,14 +94,19 @@ const NavUser = ({ ...props }) => {
           <ul>
             {appState.userSession && (
               <li>
-                <Link href="/settings/profile">Settings</Link>
+                <Link href="/settings"><SettingsIcon /> Settings</Link>
               </li>
             )}
             <li>
               <Login render={(userSession, login, logout) => (
-                <Button variant="outlined" onClick={userSession ? logout : login}>
-                  {userSession ? 'Log out' : 'Log in'}
-                </Button>
+                <Link tag={<button />} variant="default" onClick={userSession ? logout : login}>
+                  {userSession 
+                    ? <>
+                      <LogOut /> Log out
+                    </>
+                    : 'Log in'
+                  }
+                </Link>
               )} />
             </li>
           </ul>

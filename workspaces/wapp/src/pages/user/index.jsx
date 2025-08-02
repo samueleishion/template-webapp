@@ -19,6 +19,10 @@ import Nav, {
   NavLinks,
   NavUser
 } from '../../components/nav';
+import {
+  Tabs, 
+  Tab
+} from '../../components/tabs'; 
 
 /* Assets */
 import appLogo from '../../assets/logo.svg';
@@ -47,6 +51,11 @@ const User = () => {
       <LayoutMain>
         <LayoutContent>
           <h1>User Page</h1>
+          <Tabs>
+            <Tab selected>first</Tab>
+            <Tab>second</Tab>
+            <Tab>third</Tab>
+          </Tabs>
           <p>This is the user page content.</p>
           <p>Welcome, {appState.userSession.name}!</p>
         </LayoutContent>

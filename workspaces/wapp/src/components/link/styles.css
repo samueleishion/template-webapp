@@ -1,8 +1,8 @@
 :root {
-  --cs-link-color: var(--cs-action-filled);
-  --cs-link-hover-color: var(--cs-action-filled-hover);
-  --cs-link-focus-color: var(--cs-action-filled-focus);
-  --cs-link-active-color: var(--cs-action-filled-active);
+  --cs-link-color: var(--cs-action);
+  --cs-link-hover-color: var(--cs-action-hover);
+  --cs-link-focus-color: var(--cs-action-focus);
+  --cs-link-active-color: var(--cs-action-active);
   --cs-link-text-decoration: none;
   --cs-link-hover-text-decoration: underline;
   --cs-link-focus-text-decoration: underline;
@@ -11,21 +11,26 @@
 
 .cs-link {
   font-weight: 500;
-  color: var(--cs-action-filled);
+  color: var(--cs-action);
   text-decoration: var(--cs-link-text-decoration);
+  background: transparent; 
+  border: 0px; 
+  cursor: pointer; 
+  font-size: 1em; 
+  padding: 0px; 
 }
 
 .cs-link:hover {
-  color: var(--cs-action-filled-hover);
+  color: var(--cs-action-hover);
   text-decoration: var(--cs-link-hover-text-decoration);
 }
 
 .cs-link:focus-visible {
-  color: var(--cs-action-filled-focus);
+  color: var(--cs-action-focus);
   text-decoration: var(--cs-link-focus-text-decoration);
 }
 
 .cs-link:active {
-  color: var(--cs-action-filled-active);
+  color: var(--cs-action-active);
   text-decoration: var(--cs-link-active-text-decoration);
 }

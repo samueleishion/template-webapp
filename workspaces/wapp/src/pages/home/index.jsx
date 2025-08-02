@@ -52,6 +52,23 @@ const Home = ({ children }) => {
         <LayoutContent>
           <h1>C-Suite</h1>
           <img src={appLogo} className="logo" alt="App Logo" />
+          <div style={{ display: 'flex', gap: '12px' }}>
+            <Login render={(userSession, login, logout) => (
+              <Button variant="default" size="small" onClick={userSession ? logout : login}>
+                {userSession ? 'Log out' : 'Log in'}
+              </Button>
+            )} />
+            <Login render={(userSession, login, logout) => (
+              <Button variant="outlined" size="small" onClick={userSession ? logout : login}>
+                {userSession ? 'Log out' : 'Log in'}
+              </Button>
+            )} />
+            <Login render={(userSession, login, logout) => (
+              <Button variant="filled" size="small" onClick={userSession ? logout : login}>
+                {userSession ? 'Log out' : 'Log in'}
+              </Button>
+            )} />
+          </div>
           <div className="card">
             {children}
           </div>

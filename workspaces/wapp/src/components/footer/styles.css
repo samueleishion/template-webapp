@@ -15,5 +15,5 @@
   padding: 0px;
   background-color: var(--cs-footer-background);
   color: var(--cs-footer-text-color);
-  border-top: var(--cs-footer-border-width) solid var(--cs-footer-border-color);
+  border-block-start: var(--cs-footer-border-width) solid var(--cs-footer-border-color);
 }

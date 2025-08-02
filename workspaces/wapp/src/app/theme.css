@@ -43,17 +43,17 @@
   --cs-message-info-dark: #59b2b2;
   --cs-message-info-darker: #3f8484;
 
-  --cs-action-filled-text: var(--cs-color-grays-darker); 
-  --cs-action-filled: var(--cs-color-primary);
-  --cs-action-filled-hover: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
-  --cs-action-filled-focus: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
-  --cs-action-filled-active: light-dark(var(--cs-color-primary-dark), var(--cs-color-primary-dark));  
-  --cs-action-filled-disabled: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
+  --cs-action-text: var(--cs-color-grays-darker); 
+  --cs-action: var(--cs-color-primary);
+  --cs-action-hover: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
+  --cs-action-focus: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
+  --cs-action-active: light-dark(var(--cs-color-primary-dark), var(--cs-color-primary-dark));  
+  --cs-action-disabled: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
 
   --cs-app-animation-duration: 0.1s;
-  --cs-app-background: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-darkerer));
-  --cs-app-border-color: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
-  --cs-app-border-radius: 4px;
+  --cs-app-background: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkerer));
+  --cs-app-border-color: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-darker));
+  --cs-app-border-radius: 6px;
   --cs-app-border-width: 1px;
   --cs-app-box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.2);
   --cs-app-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-lighter));

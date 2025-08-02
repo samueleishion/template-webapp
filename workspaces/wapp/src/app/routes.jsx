@@ -17,6 +17,7 @@ import Home from '../pages/home';
 import Admin from '../pages/admin';
 import User from '../pages/user';
 import Developer from '../pages/developer';
+import Settings from '../pages/settings';
 
 const AppRouter = () => {
   const [appState, dispatch] = useContext(useAppState);
@@ -32,16 +33,18 @@ const AppRouter = () => {
       <Loading active={appState.loading && appState.loading.length > 0} />
       <Router>
         {appState.userSession 
-          ? appState.supervisedSession.type === "admin" 
+          ? appState.supervisedSession.role === "admin" 
             ? <Routes>
               <Route path ="*" element={<Admin />} />
             </Routes>
-            : appState.supervisedSession.type === "developer"
+            : appState.supervisedSession.role === "developer"
             ? <Routes>
               <Route path ="*" element={<Developer />} />
             </Routes>
             : <Routes>
               <Route path ="*" element={<User />} />
+              <Route path ="settings/:route" element={<Settings />} />
+              <Route path ="settings" element={<Settings />} />
             </Routes>
           : <Routes>
             <Route path ="*" element={<Home />} />

@@ -46,7 +46,7 @@
   right: 20px;
   z-index: 1000;
   padding: 10px 15px 10px 20px;
-  border-radius: 6px;
+  border-radius: var(--cs-app-border-radius);
   color: var(--cs-alert-info-color);
   background-color: var(--cs-alert-info-background); 
   display: flex; 

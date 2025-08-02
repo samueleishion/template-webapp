@@ -99,6 +99,7 @@ const Login = ({ render=null, ...props }) => {
     getUsers({
       email: email
     }, (error, resp) => {
+      console.log("Login:API.getUsers() response:", resp);
       if (error) {
         console.error("Error fetching user:", error);
         dispatch({
@@ -142,33 +143,33 @@ const Login = ({ render=null, ...props }) => {
             obj2.hasOwnProperty(key) && obj1[key] === obj2[key]
           );
 
-        if (!shallowCompare(resp, profile)) {
+        if (!shallowCompare(resp[0], profile)) {
           profile['googleId'] = profile['id'];
           delete profile['id'];
-          updateUser({
-            id: resp._id
-          }, 
-          profile,
-          () => {
-            // get updated user data 
-            getUsers({
-              email: email
-            }, (error, resp2) => {
-              if (error) {
-                console.error("Error fetching updated user:", error);
-                dispatch({
-                  type: actionTypes.setAlertOn,
-                  payload: {
-                    type: 'error',
-                    message: `Error fetching updated user: ${error.message}`
-                  }
-                });
-                clearSession();
-                return;
-              } 
-              validateUser(resp2);
-            });
-          });
+          updateUser(
+            resp[0]._id, 
+            profile,
+            () => {
+              // get updated user data 
+              getUsers({
+                email: email
+              }, (error, resp2) => {
+                if (error) {
+                  console.error("Error fetching updated user:", error);
+                  dispatch({
+                    type: actionTypes.setAlertOn,
+                    payload: {
+                      type: 'error',
+                      message: `Error fetching updated user: ${error.message}`
+                    }
+                  });
+                  clearSession();
+                  return;
+                } 
+                validateUser(resp2);
+              });
+            }
+          );
         }
         // user is valid and google profile is up-to-date, set session 
         else {
