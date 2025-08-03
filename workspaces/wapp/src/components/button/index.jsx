@@ -3,8 +3,10 @@ import './styles.css';
 
 const Button = ({
   tag=<button />,
-  children,
+  round=false,
   variant=null,
+  size=null,
+  children,
   ...props 
 }) => {
   return (
@@ -15,6 +17,8 @@ const Button = ({
         className: [
           "cs-button",
           variant ? `cs-button-${variant}` : '',
+          round ? `cs-button-round` : '',
+          size ? `cs-button-${size}` : '',
           props.className || ''
         ].join(' ').trim()
       },

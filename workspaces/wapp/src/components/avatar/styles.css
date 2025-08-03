@@ -30,11 +30,13 @@ a.cs-avatar {
 }
 
 .cs-avatar-small {
-  --cs-avatar-size: 30px;
+  --cs-avatar-block-size: 24px;
+  --cs-avatar-inline-size: 24px;
   --cs-avatar-font-size: 0.8em;
 }
 
 .cs-avatar-large {
-  --cs-avatar-size: 50px;
+  --cs-avatar-block-size: 52px;
+  --cs-avatar-inline-size: 52px;
   --cs-avatar-font-size: 1.2em;
 }

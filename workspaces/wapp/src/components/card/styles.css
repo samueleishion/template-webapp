@@ -2,7 +2,7 @@
   --cs-card-background-color: var(--cs-app-background);
   --cs-card-border-radius: var(--cs-app-border-radius);
   --cs-card-box-shadow: var(--cs-app-box-shadow);
-  --cs-card-padding: 12px;
+  --cs-card-padding: 20px;
   --cs-card-gap: 9px;
 }
 

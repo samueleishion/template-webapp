@@ -35,19 +35,21 @@ const AppRouter = () => {
         {appState.userSession 
           ? appState.supervisedSession.role === "admin" 
             ? <Routes>
-              <Route path ="*" element={<Admin />} />
+              <Route path="*" element={<Admin />} />
+              <Route path="settings/:route" element={<Settings />} />
+              <Route path="settings" element={<Settings />} />
             </Routes>
             : appState.supervisedSession.role === "developer"
             ? <Routes>
-              <Route path ="*" element={<Developer />} />
+              <Route path="*" element={<Developer />} />
             </Routes>
             : <Routes>
-              <Route path ="*" element={<User />} />
-              <Route path ="settings/:route" element={<Settings />} />
-              <Route path ="settings" element={<Settings />} />
+              <Route path="*" element={<User />} />
+              <Route path="settings/:route" element={<Settings />} />
+              <Route path="settings" element={<Settings />} />
             </Routes>
           : <Routes>
-            <Route path ="*" element={<Home />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         }
       </Router>

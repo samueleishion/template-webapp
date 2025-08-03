@@ -27,15 +27,7 @@ body {
   inline-size: 100vw;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  margin: 0px; 
-}
-
-h2 {
-  font-size: 2.4em;
-  line-height: 1.2;
+h1, h2, h3, h4, h5, h6 {
   margin: 0px; 
 }
 
@@ -43,4 +35,28 @@ hr {
   border: none;
   border-top: var(--cs-app-border-width) solid var(--cs-app-border-color);
   margin: 1em 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.cs-logo {
+  width: 240px;
+  height: 220px;
+  display: block;
+  margin: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

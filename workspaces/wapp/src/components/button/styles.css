@@ -4,7 +4,7 @@
   */
 :root {
   --cs-button-border-radius: var(--cs-app-border-radius);
-  --cs-button-border-width: var(--cs-app-border-width);
+  --cs-button-padding: 0.6rem 1.2rem;
 
   --cs-button-default-background: transparent;
   --cs-button-default-text: var(--cs-action);
@@ -46,7 +46,7 @@
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  padding: 0.6em 1.2em;
+  padding: var(--cs-button-padding);
   transition: all var(--cs-app-animation-duration);
 }
 
@@ -67,6 +67,27 @@
   color: var(--cs-button-default-disabled);
   pointer-events: none; 
   cursor: not-allowed;
+}
+
+/*
+  * Button Shape Round 
+  * These styles apply to the different button shapes: default and round 
+  */
+.cs-button-round {
+  border-radius: 99999px; 
+  padding: 6px;
+}
+
+.cs-button-round svg {
+  scale: 1;
+}
+
+.cs-button-round.cs-button-small {
+  padding: 3px; 
+}
+
+.cs-button-round.cs-button-small svg {
+  scale: 0.8; 
 }
 
 /* 

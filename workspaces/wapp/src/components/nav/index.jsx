@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { cloneElement, useContext } from 'react';
 import { useFloating, useInteractions, useClick, offset, flip, shift } from '@floating-ui/react';
 
 /* Global State */
@@ -18,19 +18,13 @@ import {
   Settings as SettingsIcon
 } from 'iconoir-react';
 import LeonardoDavinci from '../../assets/leonardo-davinci.jpg';
+import Logo from '../../assets/new_logo.svg?react';
+
 import './styles.css';
 
-const NavLogo = ({ src, alt, ...props }) => {
+const NavLogo = ({ alt, ...props }) => {
   return (
-    <img
-      {...props}
-      src={src}
-      alt={alt}
-      className={[
-        "cs-nav-logo",
-        props.className || ''
-      ].join(' ').trim()}
-    />
+    <Logo className="cs-nav-logo" aria-label={alt} />
   );
 }
 

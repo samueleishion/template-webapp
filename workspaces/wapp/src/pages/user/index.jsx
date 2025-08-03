@@ -25,7 +25,7 @@ import {
 } from '../../components/tabs'; 
 
 /* Assets */
-import appLogo from '../../assets/logo.svg';
+// import appLogo from '../../assets/logo.svg';
 
 const User = () => {
   const [appState, dispatch] = useContext(useAppState);
@@ -35,7 +35,8 @@ const User = () => {
       <LayoutHeader>
         <Nav>
           <LayoutContent className="cs-nav-content">
-            <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" />
+            {/* <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" /> */}
+                        <NavLogo alt="App Logo" />
             <NavLinks>
               <li>
                 <Link href="/">Home</Link>

@@ -21,7 +21,7 @@ import Nav, {
 } from '../../components/nav';
 
 /* Assets */ 
-import appLogo from '../../assets/logo.svg';
+// import appLogo from '../../assets/logo.svg';
 
 const Home = ({ children }) => {
   const [appState, dispatch] = useContext(useAppState);
@@ -31,7 +31,8 @@ const Home = ({ children }) => {
       <LayoutHeader>
         <Nav>
           <LayoutContent className="cs-nav-content">
-            <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" />
+            {/* <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" /> */}
+            <NavLogo alt="App Logo" />
             <NavLinks>
               <li>
                 <Link href="/">Home</Link>
@@ -51,7 +52,7 @@ const Home = ({ children }) => {
       <LayoutMain>
         <LayoutContent>
           <h1>C-Suite</h1>
-          <img src={appLogo} className="logo" alt="App Logo" />
+          {/* <img src={appLogo} className="logo" alt="App Logo" /> */}
           <div style={{ display: 'flex', gap: '12px' }}>
             <Login render={(userSession, login, logout) => (
               <Button variant="default" size="small" onClick={userSession ? logout : login}>

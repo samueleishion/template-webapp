@@ -1,0 +1,70 @@
+:root {
+  --cs-tab-border-width: calc(3 * var(--cs-app-border-width)); 
+  --cs-tab-border-color: transparent; 
+  --cs-tab-color: var(--cs-app-color);
+  --cs-tab-padding: 12px 15px; 
+  --cs-tab-selected-background-color: light-dark(var(--cs-color-grays-lighterer), var(--cs-color-grays-darker));
+  --cs-tab-selected-border-color: var(--cs-color-primary); 
+
+  --cs-tab-vertical-justify-content: flex-start; 
+}
+
+.cs-tabs {
+  display: flex; 
+  flex-direction: row; 
+  gap: 3px; 
+  margin-block: 0px;
+  padding-inline: 0px;
+}
+
+.cs-tab {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between;
+  list-style: none; 
+}
+
+.cs-tab > button {
+  border: 0px; 
+  color: var(--cs-tab-color); 
+  padding: var(--cs-tab-padding); 
+  display: flex; 
+  flex-direction: row; 
+  align-items: center;
+  gap: 6px;
+}
+
+.cs-tab > button[aria-selected="true"]:not(:disabled) {
+  background-color: var(--cs-tab-selected-background-color, transparent);
+  border-color: var(--cs-tab-selected-border-color); 
+}
+
+.cs-tab > button[aria-selected="true"]:disabled {
+  border-color: var(--cs-action-disabled); 
+}
+
+/* Horizontal variant */ 
+.cs-tabs-horizontal .cs-tab > button {
+  border-end-start-radius: 0px; 
+  border-end-end-radius: 0px; 
+  border-block-end: var(--cs-tab-border-width) solid var(--cs-tab-border-color); 
+}
+
+/* Vertical variant */ 
+.cs-tabs-vertical {
+  flex-direction: column;
+  flex-grow: 1; 
+  inline-size: 100%;
+}
+
+.cs-tabs-vertical .cs-tab {
+  inline-size: 100%; 
+}
+
+.cs-tabs-vertical .cs-tab > button {
+  inline-size: 100%; 
+  border-start-end-radius: 0px; 
+  border-end-end-radius: 0px; 
+  border-inline-end: var(--cs-tab-border-width) solid var(--cs-tab-border-color); 
+  justify-content: var(--cs-tab-vertical-justify-content);
+}

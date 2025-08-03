@@ -6,7 +6,6 @@ const route = (...path) => `${API}/${path.join('/')}`;
 export const getUsers = (params, callback) => {
   axios.get(route('users'), { params })
     .then(response => {
-      console.log("API.getUsers response:", response);
       if (response.status === 200) {
         callback(null, response.data);
       } else {

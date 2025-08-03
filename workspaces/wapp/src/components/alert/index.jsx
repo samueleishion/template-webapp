@@ -1,8 +1,3 @@
-import { useContext, useEffect } from 'react'; 
-
-/* Global State */
-// import useAppState, { actionTypes } from '../../data/app-state';
-
 /* Shared Components */
 import Button from '../../components/button';
 
@@ -13,8 +8,6 @@ import { Xmark } from 'iconoir-react';
 import './styles.css';
 
 const Alert = ({ type="", onClick=() => {}, ...props }) => {
-  // const [appState, dispatch] = useContext(useAppState);
-
   return (
     <div 
       {...props} 

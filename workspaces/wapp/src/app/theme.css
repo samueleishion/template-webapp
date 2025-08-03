@@ -1,5 +1,6 @@
 :root {
-  --cs-color-primary-lighter: #c9ebf1;
+  --cs-color-primary-lightest: rgba(100, 215, 195, 0.2);
+  --cs-color-primary-lighter: #c9f2f0;
   --cs-color-primary-light: #8be8e1;
   --cs-color-primary: #64d7c3; 
   --cs-color-primary-dark: #59b3a9; 
@@ -10,7 +11,7 @@
   --cs-color-alternate: rgb(215, 108, 163); 
 
   --cs-color-grays-lightest: #f3f2f0;
-  --cs-color-grays-lighterest: #e2e1de; 
+  --cs-color-grays-lighterer: #e2e1de; 
   --cs-color-grays-lighter: #dbdad9;
   --cs-color-grays-light: #cccbc9;
   --cs-color-grays: #afaeac;

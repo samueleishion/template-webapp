@@ -1,0 +1,71 @@
+.cs-flex {
+  display: flex; 
+}
+
+.cs-flex-inline {
+  display: inline-flex; 
+}
+
+/* Flex Direction */
+.cs-flex-row {
+  flex-direction: row; 
+}
+
+.cs-flex-column {
+  flex-direction: column; 
+} 
+
+/* Flex Wrap */
+.cs-flex-wrap {
+  flex-wrap: wrap;
+} 
+
+.cs-flex-nowrap {
+  flex-wrap: nowrap; 
+}
+
+/* Flex Alignment */
+.cs-flex-align-start {
+  align-items: flex-start;
+}
+
+.cs-flex-align-end {
+  align-items: flex-end;
+}
+
+.cs-flex-align-center {
+  align-items: center;
+}
+
+.cs-flex-align-baseline {
+  align-items: baseline;
+}
+
+.cs-flex-align-stretch {
+  align-items: stretch;
+}
+
+/* Justify Content */
+.cs-flex-justify-flex-start {
+  justify-content: flex-start;
+}
+
+.cs-flex-justify-flex-end {
+  justify-content: flex-end;
+}
+
+.cs-flex-justify-center {
+  justify-content: center;
+}
+
+.cs-flex-justify-between {
+  justify-content: space-between;
+}
+
+.cs-flex-justify-around {
+  justify-content: space-around;
+}
+
+.cs-flex-justify-evenly {
+  justify-content: space-evenly;
+}
