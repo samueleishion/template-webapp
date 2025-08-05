@@ -1,4 +1,3 @@
-const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 const dotenv = require('dotenv').config() 
@@ -53,8 +52,8 @@ if (ENV === 'PROD') {
 }
 
 // Middleware setup
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(compression());
 app.use(cors());
 app.use(helmet());

@@ -1,0 +1,33 @@
+:root {
+  --cs-dialog-border-width: 0px; 
+  --cs-dialog-border-color: transparent;
+  --cs-dialog-background: var(--cs-app-background);
+  --cs-dialog-box-shadow: var(--cs-app-box-shadow);
+  --cs-dialog-border-radius: var(--cs-app-border-radius);
+  --cs-dialog-padding: 30px;
+  
+  --cs-dialog-backdrop-background: rgba(0,0,0,0.6);
+  --cs-dialog-backdrop-blur: 2px; 
+}
+
+.cs-dialog {
+  border: var(--cs-dialog-border-width) solid var(--cs-dialog-border-color);
+  background: var(--cs-dialog-background);
+  border-radius: var(--cs-dialog-border-radius);
+  box-shadow: var(--cs-dialog-box-shadow); 
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 660px; 
+  padding: var(--cs-dialog-padding);
+  z-index: 999;
+}
+
+.cs-dialog[open] {
+  display: flex;
+}
+
+.cs-dialog::backdrop {
+  background-color: var(--cs-dialog-backdrop-background);
+  backdrop-filter: blur(var(--cs-dialog-backdrop-blur));
+}

@@ -18,7 +18,7 @@ const getAll = (req, res) => {
 
 const getById = (req, res) => {
   logr.info('users.getById()')
-  logr.data(req.param.ids)
+  logr.data(req.param.id)
 
   if (!req.params.id) {
     logr.error('User ID is required')

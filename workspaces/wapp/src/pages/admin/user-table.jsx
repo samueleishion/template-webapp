@@ -1,29 +1,37 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 /* Global State */
 import useAppState, { actionTypes } from "../../data/app-state";
-import { getUsers } from "../../data/api";
+import { 
+  getUsers,
+  updateUser 
+} from "../../data/api";
 
 /* Shared Components */
 import Avatar from '../../components/avatar'; 
 import Button from '../../components/button'; 
 import { DataTable } from "../../components/table/bundles";
+import Dialog from '../../components/dialog';
 import Flex from '../../components/flex';
+import Input from '../../components/input';
 import Link from "../../components/link";
 
 /* Assets */ 
 import { 
   Code,
-  Developer,
   EditPencil,
+  Eye,
+  Group,
   Key,
   User,
-  UserCrown
 } from 'iconoir-react'
+import { EditUserForm } from "./views";
 
 const UserTable = () => {
   const [appState, dispatch] = useContext(useAppState);
   const [data, setData] = useState([]);
+  const [toEdit, setToEdit] = useState(null);
+  const dialogRef = useRef(null);
 
   const TABLE_HEADERS = [{
     "label": "Name",
@@ -54,10 +62,9 @@ const UserTable = () => {
         {row.role === "admin"
           ? <Key />
           : row.role === "developer"
-          ? <Developer />
+          ? <Code />
           : <User />
         }
-        {/* <Code /> */}
         <code>
           {row.role}
         </code>
@@ -71,8 +78,16 @@ const UserTable = () => {
     "align": "right",
     "template": (row) => (
       <Flex direction="row" justify="flex-end" align="center" gap={6}>
-        <Button variant="outlined" round size="small" aria-label="Edit ">
+        <Button variant="outlined" round size="small" aria-label="Edit" onClick={() => {
+          setToEdit(row);
+          dialogRef.current && 
+          dialogRef.current.showModal && 
+          dialogRef.current.showModal();
+        }}>
           <EditPencil />
+        </Button>
+        <Button variant="outlined" round size="small" aria-label="Access user account">
+          <Eye />
         </Button>
       </Flex>
     )
@@ -108,7 +123,6 @@ const UserTable = () => {
             picture: user.picture
           }))
         );
-        dispatchNotification('UserTable.fetchUsers', 'success', 'Users fetched successfully.');
       });
     } catch (error) {
       console.error("Failed to fetch users:", error);
@@ -121,17 +135,56 @@ const UserTable = () => {
     });
   };
 
+  const handleCancelEdit = () => {
+    dialogRef.current && dialogRef.current.close();
+    setToEdit(null);
+  }
+
+  const handleSaveChanges = (update) => {
+    // Handle save logic here
+    dispatch({ type: actionTypes.setLoadingOn, payload: 'UserTable.updateUser' });
+    updateUser(toEdit._id, update, (err, updatedUser) => {
+      dispatch({ type: actionTypes.setLoadingOff, payload: 'UserTable.updateUser' });
+
+      if (err) {
+        console.error("Error updating user:", err);
+        dispatch({ type: actionTypes.setAlertOn, payload: { type: 'error', message: 'Failed to update user.' } });
+        return;
+      }
+      
+      // Update the local state with the updated user
+      setData(prevData => prevData.map(user => 
+        user._id === updatedUser._id ? updatedUser : user
+      ));
+      
+      dispatch({ type: actionTypes.setAlertOn, payload: { type: 'success', message: 'User updated successfully.' } });
+      fetchUsers();
+    });
+    dialogRef.current && dialogRef.current.close();
+    setToEdit(null);
+  }
+
   useEffect(() => {
     fetchUsers();
   }, []);
 
   return (
-    <DataTable 
-      summary="List of Users"
-      data={data}
-      // columns={data[0] ? Object.keys(data[0]).map((x, i) => ({ label: x, key: x, sortable: false })) : []}
-      columns={TABLE_HEADERS}
-    />
+    <>
+      <DataTable 
+        summary="List of Users"
+        data={data}
+        columns={TABLE_HEADERS}
+      />
+      <Dialog ref={dialogRef} title="Edit user">
+        {toEdit && (
+          <EditUserForm 
+            userInfo={toEdit} 
+            onCancel={handleCancelEdit}
+            onSubmit={handleSaveChanges}
+          />
+        )}
+      </Dialog>
+    </>
   );
 }
 

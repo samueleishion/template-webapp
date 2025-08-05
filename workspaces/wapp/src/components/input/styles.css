@@ -1,0 +1,55 @@
+.cs-input-container {
+  display: flex;
+  flex-direction: row;
+  /* width: 100%; */
+  padding: 9px; 
+  background-color: var(--cs-color-grays-darkest);
+  border-radius: var(--cs-app-border-radius);
+  border: var(--cs-app-border-width) solid var(--cs-app-border-color);
+  transition: all var(--cs-app-animation-duration);
+}
+
+.cs-input-container:has(select.cs-input) {
+  padding: 0px; 
+}
+
+.cs-input-container select.cs-input {
+  padding: 9px; 
+}
+
+.cs-input-container:hover {
+  background-color: var(--cs-color-grays-darker);
+  border-color: var(--cs-color-grays-light); 
+}
+
+.cs-input-container:focus-within {
+  background-color: var(--cs-color-grays-darker);
+  border-color: var(--cs-color-primary);
+} 
+
+.cs-input-label {
+  font-size: 0.9rem;
+  color: var(--cs-color-grays-light);
+  /* margin-bottom: 4px; */
+  align-self: flex-start;
+  justify-self: flex-start;
+}
+
+.cs-input {
+  width: 100%;
+  background-color: transparent;
+  color: var(--cs-color-grays-light);
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  border-width: 0px; 
+  cursor: text; 
+}
+
+select.cs-input {
+  cursor: pointer;
+}
+
+.cs-input:disabled {
+  cursor: not-allowed;
+}
