@@ -32,7 +32,7 @@ import UserTable from './user-table';
 
 const Admin = () => {
   const [appState, dispatch] = useContext(useAppState);
-  const [tabSelected, setTabSelected] = useState('overview');
+  const [tabSelected, setTabSelected] = useState('users');
 
   return (
     <Layout>
@@ -57,12 +57,6 @@ const Admin = () => {
         <LayoutContent>
           <h1>Admin Page</h1>
           <Tabs>
-            <Tab 
-              selected={tabSelected === 'overview'} 
-              onClick={() => setTabSelected('overview')}
-            >
-              Overview
-            </Tab>
             <Tab
               selected={tabSelected === 'users'} 
               onClick={() => setTabSelected('users')}
@@ -70,13 +64,6 @@ const Admin = () => {
               Users
             </Tab>
           </Tabs>
-          {tabSelected === 'overview' && (
-            <div>
-              <h3>Overview Content</h3>
-              <p>Welcome, {appState.userSession.name}!</p>
-              <p>This is the overview page content.</p>
-            </div>
-          )}
           {tabSelected === 'users' && (
             <UserTable />
           )}

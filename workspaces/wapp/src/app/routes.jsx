@@ -9,7 +9,7 @@ import {
 import useAppState, { actionTypes } from '../data/app-state';
 
 /* Shared Components */
-import Alert from '../components/alert';
+import Alert, { AlertManager } from '../components/alert';
 import Loading from '../components/loading'; 
 
 /* Pages */ 
@@ -22,9 +22,11 @@ import Settings from '../pages/settings';
 const AppRouter = () => {
   const [appState, dispatch] = useContext(useAppState);
 
-  const closeAlert = () => {
+  const closeAlert = (entry) => {
+    console.log("AppRouter:closeAlert()", entry);
     dispatch({
-      type: actionTypes.setAlertOff
+      type: actionTypes.setAlertOff,
+      payload: entry 
     });
   };
 
@@ -42,6 +44,8 @@ const AppRouter = () => {
             : appState.supervisedSession.role === "developer"
             ? <Routes>
               <Route path="*" element={<Developer />} />
+              <Route path="settings/:route" element={<Settings />} />
+              <Route path="settings" element={<Settings />} />
             </Routes>
             : <Routes>
               <Route path="*" element={<User />} />
@@ -53,9 +57,10 @@ const AppRouter = () => {
           </Routes>
         }
       </Router>
-      <Alert type={appState.alertType} onClick={closeAlert}>
+      <AlertManager entries={appState.alerts} onClose={closeAlert} />
+      {/* <Alert type={appState.alertType} onClick={closeAlert}>
         {appState.alertMessage}
-      </Alert>
+      </Alert> */}
     </>
   )
 }; 

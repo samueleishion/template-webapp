@@ -103,7 +103,7 @@ const NavUser = ({ ...props }) => {
               <li>
                 <Link tag={<button />} onClick={() => {
                   dispatch({ type: actionTypes.setSupervisedSession, payload: appState.userSession });
-                  window.location.reload();
+                  // window.location.reload();
                 }}>
                   <Key />
                   Admin view

@@ -1,7 +1,16 @@
-import { cloneElement } from 'react'
+import { cloneElement, useState } from 'react'
 import './styles.css'
 
 const Avatar = ({ tag=<img />, src, alt, size = 'medium', onClick=() => {}, ...props }) => {
+  const [imgSrc, setImgSrc] = useState(src);
+
+  const handleError = () => {
+    if (tag.type === 'img') {
+      setImgSrc('/path/to/default/avatar.png'); // Fallback image path
+    } else {
+      console.warn('Avatar component requires a valid image source.');
+    }
+  }
 
   return (
     cloneElement(tag, {
@@ -14,7 +23,8 @@ const Avatar = ({ tag=<img />, src, alt, size = 'medium', onClick=() => {}, ...p
         `cs-avatar-${size}`,
         props.className || ''
       ].join(' ').trim(),
-      onClick: onClick
+      onClick: onClick,
+      onError: handleError
     })
   )
 }

@@ -20,7 +20,7 @@ import Link from "../../components/link";
 import { 
   Code,
   EditPencil,
-  Eye,
+  Group,
   Key,
   User,
 } from 'iconoir-react'
@@ -95,16 +95,24 @@ const UserTable = () => {
           variant="outlined" 
           round 
           size="small" 
-          aria-label="Access user account"
+          aria-label="Supervise user account"
           disabled={row._id === appState.supervisedSession._id}
           onClick={() => {
             dispatch({
               type: actionTypes.setSupervisedSession,
               payload: row
             })
+            dispatch({
+              type: actionTypes.setAlertOn,
+              payload: {
+                id: Date.now(),
+                type: 'info',
+                message: `You are now supervising ${row.name}'s account.`
+              }
+            })
           }}
         >
-          <Eye />
+          <Group />
         </Button>
       </Flex>
     )

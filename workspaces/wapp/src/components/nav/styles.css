@@ -121,7 +121,7 @@
   flex-grow: 1;  
   align-items: center;
   flex-direction: row; 
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 3px 6px;
   gap: 9px; 
   border-radius: var(--cs-app-border-radius);
