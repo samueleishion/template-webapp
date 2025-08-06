@@ -1,5 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 
+// comment out to reset local storage
+// window.localStorage.setItem('cs-userSession', null);
+// window.localStorage.setItem('cs-supervisedSession', null);
 const initialUserSession = window.localStorage.getItem('userSession');
 const initialSupervisedSession = window.localStorage.getItem('supervisedSession');
 

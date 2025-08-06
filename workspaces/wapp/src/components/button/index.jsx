@@ -22,21 +22,26 @@ const Button = ({
           props.className || ''
         ].join(' ').trim()
       },
-      children
+      tag.type !== "input" ? children : null
     )
   );
 }
-//     <button 
-//       {...props} 
-//       className={[
-//         "cs-button",
-//         variant ? `cs-button-${variant}` : '',
-//         props.className || ''
-//       ].join(' ').trim()
-//     }>
-//       {children}
-//     </button>
-//   );
-// }
+
+const ButtonGroup = ({
+  children,
+  className='',
+  ...props
+}) => {
+  return (
+    <div className={`cs-button-group ${className}`} {...props}>
+      {children}
+    </div>
+  );
+}
 
 export default Button;
+
+export { 
+  Button,
+  ButtonGroup 
+};

@@ -18,7 +18,8 @@ import {
   Settings as SettingsIcon,
   Key,
   Group,
-  User
+  User,
+  LogIn
 } from 'iconoir-react';
 import LeonardoDavinci from '../../assets/leonardo-davinci.jpg';
 import Logo from '../../assets/new_logo.svg?react';
@@ -31,7 +32,7 @@ const NavLogo = ({ alt, ...props }) => {
   );
 }
 
-const NavLinks = ({ children, ...props }) => {
+const NavLinks = ({ children, userRole="user", ...props }) => {
   return (
     <nav className="cs-nav-links-container">
       <ul
@@ -41,7 +42,32 @@ const NavLinks = ({ children, ...props }) => {
           props.className || ''
         ].join(' ').trim()}
       >
-        {children}
+        {userRole === "admin"
+          ? <>
+            <li>
+              <Link href="/">Data</Link>
+            </li>
+            <li>
+              <Link href="/product">Product</Link>
+            </li>
+          </>
+          : userRole === "developer"
+          ? <>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/develop">Develop</Link>
+            </li>
+          </>
+          : userRole === "user"
+          ? <>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+          </>
+          : null
+        }
       </ul>
     </nav>
   );
@@ -72,59 +98,76 @@ const NavUser = ({ ...props }) => {
         props.className || ''
       ].join(' ').trim()}
     >
-      {appState.userSession._id !== appState.supervisedSession._id && (
-        <Group id={id} aria-label="Supervised session by admin" />
-      )}
-      <Avatar
-        tag={<Button
-          variant="outlined" 
-          aria-label={appState.supervisedSession ? "log out" : "log in"} 
-        />}
-        aria-describedby={appState.userSession._id !== appState.supervisedSession._id ? id : undefined}
-        src={appState.supervisedSession?.picture || LeonardoDavinci}
-        alt={appState.supervisedSession?.name || 'User Avatar'}
-        size="medium"
-        ref={refs.setReference} {...getReferenceProps()}
-      />
-      {isExpanded && (
-        <Card
-          ref={refs.setFloating}
-          className="cs-nav-user-dropdown"
-          style={floatingStyles}
-          {...getFloatingProps()}
-        >
-          <ul>
-            {appState.userSession && (
-              <li>
-                <Link href="/settings"><SettingsIcon /> Settings</Link>
-              </li>
-            )}
-            {appState.userSession._id !== appState.supervisedSession._id && (
-              <li>
-                <Link tag={<button />} onClick={() => {
-                  dispatch({ type: actionTypes.setSupervisedSession, payload: appState.userSession });
-                  // window.location.reload();
-                }}>
-                  <Key />
-                  Admin view
-                </Link>
-              </li>
-            )}
-            <li>
-              <Login render={(userSession, login, logout) => (
-                <Link tag={<button />} variant="default" onClick={userSession ? logout : login}>
-                  {userSession 
-                    ? <>
-                      <LogOut /> Log out
-                    </>
-                    : 'Log in'
-                  }
-                </Link>
-              )} />
-            </li>
-          </ul>
-        </Card>
-      )}
+      {!(appState.userSession && appState.supervisedSession)
+        ? <Login render={(userSession, login, logout) => (
+            // <Link tag={<button />} variant="default" onClick={userSession ? logout : login}>
+            //   {userSession 
+            //     ? <>
+            //       <LogOut /> Log out
+            //     </>
+            //     : 'Log in'
+            //   }
+            // </Link>
+            <Button variant="default" size="small" onClick={userSession ? logout : login}>
+              {userSession ? <><LogOut /> Log out</> : <><LogIn /> Log in</>}
+            </Button>
+          )} />
+        : <>
+          {appState.userSession._id !== appState.supervisedSession._id && (
+            <Group id={id} aria-label="Supervised session by admin" />
+          )}
+          <Avatar
+            tag={<Button
+              variant="outlined" 
+              aria-label={appState.supervisedSession ? "log out" : "log in"} 
+            />}
+            aria-describedby={appState.userSession._id !== appState.supervisedSession._id ? id : undefined}
+            src={appState.supervisedSession?.picture || LeonardoDavinci}
+            alt={appState.supervisedSession?.name || 'User Avatar'}
+            size="medium"
+            ref={refs.setReference} {...getReferenceProps()}
+          />
+          {isExpanded && (
+            <Card
+              ref={refs.setFloating}
+              className="cs-nav-user-dropdown"
+              style={floatingStyles}
+              {...getFloatingProps()}
+            >
+              <ul>
+                {appState.userSession && (
+                  <li>
+                    <Link href="/settings"><SettingsIcon /> Settings</Link>
+                  </li>
+                )}
+                {appState.userSession._id !== appState.supervisedSession._id && (
+                  <li>
+                    <Link tag={<button />} onClick={() => {
+                      dispatch({ type: actionTypes.setSupervisedSession, payload: appState.userSession });
+                      window.location.href = "/";
+                    }}>
+                      <Key />
+                      Admin view
+                    </Link>
+                  </li>
+                )}
+                <li>
+                  <Login render={(userSession, login, logout) => (
+                    <Link tag={<button />} variant="default" onClick={userSession ? logout : login}>
+                      {userSession 
+                        ? <>
+                          <LogOut /> Log out
+                        </>
+                        : 'Log in'
+                      }
+                    </Link>
+                  )} />
+                </li>
+              </ul>
+            </Card>
+          )}
+        </>
+      }
     </div>
   );
 }

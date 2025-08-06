@@ -43,6 +43,9 @@
   cursor: pointer;
   display: flex; 
   flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -67,6 +70,14 @@
   color: var(--cs-button-default-disabled);
   pointer-events: none; 
   cursor: not-allowed;
+}
+
+/*
+  * Button Size
+  * These styles apply to the different button shapes: default and round 
+  */
+.cs-button-small {
+  padding: 0.3rem 0.6rem;
 }
 
 /*
@@ -152,4 +163,31 @@
   pointer-events: none; 
   cursor: not-allowed;
   color: var(--cs-button-filled-text);
+}
+
+
+/* 
+  * Button Group
+  * These styles apply to the different button variants: default, outlined, and filled.
+  */
+.cs-button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-button-group > .cs-button {
+  border-radius: 0px; 
+}
+
+.cs-button-group > .cs-button:first-child {
+  border-top-left-radius: var(--cs-button-border-radius);
+  border-bottom-left-radius: var(--cs-button-border-radius);
+}
+
+.cs-button-group > .cs-button:last-child {
+  border-top-right-radius: var(--cs-button-border-radius);
+  border-bottom-right-radius: var(--cs-button-border-radius);
 }

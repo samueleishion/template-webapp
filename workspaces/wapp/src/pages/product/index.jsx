@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 
 /* Global State */
 import useAppState, { actionTypes } from '../../data/app-state';
@@ -6,6 +6,7 @@ import useAppState, { actionTypes } from '../../data/app-state';
 /* Shared Components */
 import Button from '../../components/button';
 import Footer from '../../components/footer';
+import Login from '../../components/login';
 import Layout, { 
   LayoutContent, 
   LayoutFooter, 
@@ -13,27 +14,18 @@ import Layout, {
   LayoutMain
 } from '../../components/layout';
 import Link from '../../components/link';
-import Login from '../../components/login';
 import Nav, {
   NavLogo,
   NavLinks,
   NavUser
 } from '../../components/nav';
-import {
-  Tabs, 
-  Tab
-} from '../../components/tabs'; 
 
-/* Assets */
+/* Assets */ 
 // import appLogo from '../../assets/logo.svg';
 
-/* Local Modules */ 
-import UserTable from './user-table';
-
-const Admin = () => {
+const Home = ({ children }) => {
   const [appState, dispatch] = useContext(useAppState);
-  const [tabSelected, setTabSelected] = useState('users');
-
+  
   return (
     <Layout>
       <LayoutHeader>
@@ -48,18 +40,7 @@ const Admin = () => {
       </LayoutHeader>
       <LayoutMain>
         <LayoutContent>
-          <h1>Admin Page</h1>
-          <Tabs>
-            <Tab
-              selected={tabSelected === 'users'} 
-              onClick={() => setTabSelected('users')}
-            >
-              Users
-            </Tab>
-          </Tabs>
-          {tabSelected === 'users' && (
-            <UserTable />
-          )}
+          <h1>Product</h1>
         </LayoutContent>
       </LayoutMain>
       <LayoutFooter>
@@ -71,4 +52,4 @@ const Admin = () => {
   );
 }
 
-export default Admin;
+export default Home;

@@ -33,19 +33,8 @@ const Home = ({ children }) => {
           <LayoutContent className="cs-nav-content">
             {/* <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" /> */}
             <NavLogo alt="App Logo" />
-            <NavLinks>
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/about">About</Link>
-              </li>
-            </NavLinks>
-            <Login render={(userSession, login, logout) => (
-              <Button variant="default" size="small" onClick={userSession ? logout : login}>
-                {userSession ? 'Log out' : 'Log in'}
-              </Button>
-            )} />
+            <NavLinks userRole={appState.supervisedSession ? appState.supervisedSession.role : "guest"} />
+            <NavUser />
           </LayoutContent>
         </Nav>
       </LayoutHeader>
@@ -55,17 +44,17 @@ const Home = ({ children }) => {
           {/* <img src={appLogo} className="logo" alt="App Logo" /> */}
           <div style={{ display: 'flex', gap: '12px' }}>
             <Login render={(userSession, login, logout) => (
-              <Button variant="default" size="small" onClick={userSession ? logout : login}>
+              <Button variant="default" onClick={userSession ? logout : login}>
                 {userSession ? 'Log out' : 'Log in'}
               </Button>
             )} />
             <Login render={(userSession, login, logout) => (
-              <Button variant="outlined" size="small" onClick={userSession ? logout : login}>
+              <Button variant="outlined" onClick={userSession ? logout : login}>
                 {userSession ? 'Log out' : 'Log in'}
               </Button>
             )} />
             <Login render={(userSession, login, logout) => (
-              <Button variant="filled" size="small" onClick={userSession ? logout : login}>
+              <Button variant="filled" onClick={userSession ? logout : login}>
                 {userSession ? 'Log out' : 'Log in'}
               </Button>
             )} />

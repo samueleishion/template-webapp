@@ -31,16 +31,8 @@ const Developer = () => {
       <LayoutHeader>
         <Nav>
           <LayoutContent className="cs-nav-content">
-            {/* <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" /> */}
-                        <NavLogo alt="App Logo" />
-            <NavLinks>
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/about">About</Link>
-              </li>
-            </NavLinks>
+            <NavLogo alt="App Logo" />
+            <NavLinks userRole={appState.supervisedSession.role} />
             <NavUser />
           </LayoutContent>
         </Nav>

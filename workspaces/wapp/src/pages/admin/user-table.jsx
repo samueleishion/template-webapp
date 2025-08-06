@@ -148,16 +148,19 @@ const UserTable = () => {
             picture: user.picture
           }))
         );
+        dispatch({ 
+          type: actionTypes.setLoadingOff, 
+          payload: 'UserTable.fetchUsers' 
+        });
       });
     } catch (error) {
       console.error("Failed to fetch users:", error);
       dispatchNotification('UserTable.fetchUsers', 'error', 'Failed to fetch users.');
+      dispatch({ 
+        type: actionTypes.setLoadingOff, 
+        payload: 'UserTable.fetchUsers' 
+      });
     }
-
-    dispatch({ 
-      type: actionTypes.setLoadingOff, 
-      payload: 'UserTable.fetchUsers' 
-    });
   };
 
   const handleCancelEdit = () => {

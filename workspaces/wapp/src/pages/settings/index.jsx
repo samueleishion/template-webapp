@@ -25,6 +25,9 @@ import {
   Tab
 } from '../../components/tabs';
 
+/* Internal Modules */
+import AccountSettings from './views/account';
+
 /* Assets */
 import {
   Code,
@@ -52,14 +55,7 @@ const Settings = () => {
           <LayoutContent className="cs-nav-content">
             {/* <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" /> */}
             <NavLogo alt="App Logo" />
-            <NavLinks>
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/about">About</Link>
-              </li>
-            </NavLinks>
+            <NavLinks userRole={appState.supervisedSession.role} />
             <NavUser />
           </LayoutContent>
         </Nav>
@@ -110,10 +106,7 @@ const Settings = () => {
             </div> 
             <div>
               {tabSelected === 'account' && (
-                <div>
-                  <h2>Account</h2>
-                  <p>Manage your account settings here.</p>
-                </div>
+                <AccountSettings />
               )}
               {tabSelected === 'payment-methods' && (
                 <div>

@@ -95,11 +95,15 @@ const Login = ({ render=null, ...props }) => {
       return;
     }
 
+    dispatch({
+      type: actionTypes.setLoadingOn,
+      payload: 'fetchUser'
+    });
+
     // get user 
     getUsers({
       email: email
     }, (error, resp) => {
-      console.log("Login:API.getUsers() response:", resp);
       if (error) {
         console.error("Error fetching user:", error);
         dispatch({
@@ -108,6 +112,10 @@ const Login = ({ render=null, ...props }) => {
             type: 'error',
             message: `Error fetching user: ${error.message}`
           }
+        });
+        dispatch({
+          type: actionTypes.setLoadingOff,
+          payload: 'fetchUser'
         });
         clearSession();
         return;
@@ -130,10 +138,18 @@ const Login = ({ render=null, ...props }) => {
                 message: `Error creating user: ${err.message}`
               }
             });
+            dispatch({
+              type: actionTypes.setLoadingOff,
+              payload: 'fetchUser'
+            });
             clearSession();
             return;
           }
           validateUser(resp2);
+          dispatch({
+            type: actionTypes.setLoadingOff,
+            payload: 'fetchUser'
+          });
         });
       } else {
         // google profile has changed, update 
@@ -163,9 +179,17 @@ const Login = ({ render=null, ...props }) => {
                       message: `Error fetching updated user: ${error.message}`
                     }
                   });
+                  dispatch({
+                    type: actionTypes.setLoadingOff,
+                    payload: 'fetchUser'
+                  });
                   clearSession();
                   return;
                 } 
+                dispatch({
+                  type: actionTypes.setLoadingOff,
+                  payload: 'fetchUser'
+                });
                 validateUser(resp2);
               });
             }
@@ -174,6 +198,10 @@ const Login = ({ render=null, ...props }) => {
         // user is valid and google profile is up-to-date, set session 
         else {
           validateUser(resp);
+          dispatch({
+            type: actionTypes.setLoadingOff,
+            payload: 'fetchUser'
+          });
         }
       } 
     }); 
@@ -259,7 +287,7 @@ const Login = ({ render=null, ...props }) => {
 
   return (
     render === null || typeof render !== 'function'
-      ? appState.userSession
+      ? appState.userSession.role !== 'guest'
         ? <button onClick={logout}>
           Log out
         </button>
