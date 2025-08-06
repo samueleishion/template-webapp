@@ -1,8 +1,8 @@
-import React, { cloneElement, useContext } from 'react';
+import React, { useId, useContext } from 'react';
 import { useFloating, useInteractions, useClick, offset, flip, shift } from '@floating-ui/react';
 
 /* Global State */
-import useAppState from '../../data/app-state';
+import useAppState, { actionTypes } from '../../data/app-state';
 import useLocalState from '../../data/local-state';
 
 /* Shared Components */
@@ -15,7 +15,10 @@ import Link from '../link';
 /* Assets */
 import {
   LogOut, 
-  Settings as SettingsIcon
+  Settings as SettingsIcon,
+  Key,
+  Group,
+  User
 } from 'iconoir-react';
 import LeonardoDavinci from '../../assets/leonardo-davinci.jpg';
 import Logo from '../../assets/new_logo.svg?react';
@@ -47,6 +50,7 @@ const NavLinks = ({ children, ...props }) => {
 const NavUser = ({ ...props }) => {
   const [appState, dispatch] = useContext(useAppState);
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const id = useId();
 
   const { refs, floatingStyles, context } = useFloating({
     open: isExpanded,
@@ -68,13 +72,17 @@ const NavUser = ({ ...props }) => {
         props.className || ''
       ].join(' ').trim()}
     >
+      {appState.userSession._id !== appState.supervisedSession._id && (
+        <Group id={id} aria-label="Supervised session by admin" />
+      )}
       <Avatar
         tag={<Button
           variant="outlined" 
-          aria-label={appState.userSession ? "log out" : "log in"} 
+          aria-label={appState.supervisedSession ? "log out" : "log in"} 
         />}
-        src={appState.userSession?.picture || LeonardoDavinci}
-        alt={appState.userSession?.name || 'User Avatar'}
+        aria-describedby={appState.userSession._id !== appState.supervisedSession._id ? id : undefined}
+        src={appState.supervisedSession?.picture || LeonardoDavinci}
+        alt={appState.supervisedSession?.name || 'User Avatar'}
         size="medium"
         ref={refs.setReference} {...getReferenceProps()}
       />
@@ -89,6 +97,17 @@ const NavUser = ({ ...props }) => {
             {appState.userSession && (
               <li>
                 <Link href="/settings"><SettingsIcon /> Settings</Link>
+              </li>
+            )}
+            {appState.userSession._id !== appState.supervisedSession._id && (
+              <li>
+                <Link tag={<button />} onClick={() => {
+                  dispatch({ type: actionTypes.setSupervisedSession, payload: appState.userSession });
+                  window.location.reload();
+                }}>
+                  <Key />
+                  Admin view
+                </Link>
               </li>
             )}
             <li>

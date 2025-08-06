@@ -86,13 +86,16 @@
 
 .cs-nav-user {
   display: flex; 
+  flex-direction: row; 
+  gap: var(--cs-nav-gap);
+  justify-content: flex-end;
   align-items: center;
   padding-inline: 16px;
 }
 
 .cs-nav-user-dropdown {
   background-color: var(--cs-nav-background-color);
-  z-index: 1000; 
+  z-index: 2000; 
 }
 
 .cs-nav-user-dropdown ul {
@@ -120,7 +123,7 @@
   flex-direction: row; 
   justify-content: space-between;
   padding: 3px 6px;
-  gap: 6px; 
+  gap: 9px; 
   border-radius: var(--cs-app-border-radius);
 }
 

@@ -21,7 +21,6 @@ import {
   Code,
   EditPencil,
   Eye,
-  Group,
   Key,
   User,
 } from 'iconoir-react'
@@ -78,15 +77,33 @@ const UserTable = () => {
     "align": "right",
     "template": (row) => (
       <Flex direction="row" justify="flex-end" align="center" gap={6}>
-        <Button variant="outlined" round size="small" aria-label="Edit" onClick={() => {
-          setToEdit(row);
-          dialogRef.current && 
-          dialogRef.current.showModal && 
-          dialogRef.current.showModal();
-        }}>
+        <Button 
+          variant="outlined" 
+          round 
+          size="small" 
+          aria-label="Edit" 
+          onClick={() => {
+            setToEdit(row);
+            dialogRef.current && 
+            dialogRef.current.showModal && 
+            dialogRef.current.showModal();
+          }}
+        >
           <EditPencil />
         </Button>
-        <Button variant="outlined" round size="small" aria-label="Access user account">
+        <Button 
+          variant="outlined" 
+          round 
+          size="small" 
+          aria-label="Access user account"
+          disabled={row._id === appState.supervisedSession._id}
+          onClick={() => {
+            dispatch({
+              type: actionTypes.setSupervisedSession,
+              payload: row
+            })
+          }}
+        >
           <Eye />
         </Button>
       </Flex>

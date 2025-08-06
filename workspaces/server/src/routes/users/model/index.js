@@ -13,7 +13,7 @@ const postUser = (data) => {
 }
 
 const putUserById = (id, data) => {
-  console.log("putUserById()", id, data); 
+  console.log('putUserById()', id, data)
   return User.findByIdAndUpdate(id, data, {
     new: true,
     runValidators: true
