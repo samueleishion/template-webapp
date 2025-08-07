@@ -25,10 +25,11 @@ const DataTable = ({ summary=null, data=[], columns=[], ...props }) => {
         style={{ 
           blockSize: '120px',
           padding: '40px',
+          gap: '15px',
         }}
       >
         <WarningHexagon style={{ scale: '2'}}/>
-        <p className="cs-data-table-empty">No data available</p>
+        <p className="cs-data-table-empty">No data available.</p>
       </Flex>
     );
   }

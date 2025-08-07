@@ -78,6 +78,11 @@
   */
 .cs-button-small {
   padding: 0.3rem 0.6rem;
+  font-size: 0.95rem;
+}
+
+.cs-button-small svg {
+  scale: 0.8; 
 }
 
 /*
@@ -95,10 +100,7 @@
 
 .cs-button-round.cs-button-small {
   padding: 3px; 
-}
-
-.cs-button-round.cs-button-small svg {
-  scale: 0.8; 
+  font-size: 0.8rem;
 }
 
 /* 
@@ -175,7 +177,7 @@
   flex-direction: row;
   gap: 0px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .cs-button-group > .cs-button {

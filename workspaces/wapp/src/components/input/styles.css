@@ -1,20 +1,20 @@
 :root {
-  --cs-input-background-color: var(--cs-color-grays-darkest);
+  --cs-input-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkest));
   --cs-input-border-radius: var(--cs-app-border-radius);
   --cs-input-border-color: var(--cs-app-border-color);
   --cs-input-border-width: var(--cs-app-border-width);
-  --cs-input-color: var(--cs-color-grays-light);
+  --cs-input-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-light));
 
-  --cs-input-label-color: var(--cs-color-grays-light);
+  --cs-input-label-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-light));
   --cs-input-label-font-size: 0.9rem;
 
-  --cs-input-hover-background-color: var(--cs-color-grays-darker);
-  --cs-input-hover-border-color: var(--cs-color-grays-light);
-  --cs-input-focus-background-color: var(--cs-color-grays-darker);
-  --cs-input-focus-border-color: var(--cs-color-primary);
-  --cs-input-disabled-background-color: var(--cs-color-grays-darkest);
-  --cs-input-disabled-border-color: var(--cs-color-grays-dark);
-  --cs-input-readonly-background-color: var(--cs-color-grays-darkest);
+  --cs-input-hover-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darker));
+  --cs-input-hover-border-color: light-dark(var(--cs-color-grays-dark), var(--cs-color-grays-light));
+  --cs-input-focus-background-color: light-dark(var(--cs-color-grays-lighterer), var(--cs-color-grays-darker));
+  --cs-input-focus-border-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-primary));
+  --cs-input-disabled-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkest));
+  --cs-input-disabled-border-color: light-dark(var(--cs-color-grays-light), var(--cs-color-grays-dark));
+  --cs-input-readonly-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkest));
   --cs-input-readonly-border-color: var(--cs-app-border-color);
 }
 
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: row;
   /* width: 100%; */
-  padding: 9px; 
+  padding: 6px; 
   background-color: var(--cs-input-background-color);
   border-radius: var(--cs-input-border-radius);
   border: var(--cs-input-border-width) solid var(--cs-input-border-color);

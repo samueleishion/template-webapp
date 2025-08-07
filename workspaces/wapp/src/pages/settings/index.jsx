@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import useAppState from '../../data/app-state'; 
 
 /* Shared Components */
+import Card from '../../components/card';
 import Flex from '../../components/flex';
 import Footer from '../../components/footer';
 import Layout, { 
@@ -27,6 +28,7 @@ import {
 
 /* Internal Modules */
 import AccountSettings from './views/account';
+import DeveloperSettings from './views/developer';
 
 /* Assets */
 import {
@@ -65,60 +67,58 @@ const Settings = () => {
           <h1>Settings</h1>
         </LayoutContent>
         <LayoutContent>
-          <Flex direction="row" justify="flex-start" align="flex-start" gap={20}>
-            <div style={{maxWidth: '220px'}}>
-              <Tabs orientation="vertical">
-                <Tab 
-                  selected={tabSelected === 'account'}
-                  onClick={() => handleTabChange('account')}
-                >
-                  <User />
-                  <span>Account</span>
-                </Tab>
-                <Tab 
-                  selected={tabSelected === 'payment-methods'}
-                  onClick={() => handleTabChange('payment-methods')}
-                >
-                  <CreditCards /> 
-                  <span>Payment Methods</span>
-                </Tab>
-                <Tab 
-                  selected={tabSelected === 'subscriptions'}
-                  onClick={() => handleTabChange('subscriptions')}
+          <Flex direction="row" justify="flex-start" align="flex-start" gap={12}>
+            <Tabs orientation="vertical" style={{maxWidth: '220px', minWidth: '220px', paddingBlockStart: '20px'}}>
+              <Tab 
+                selected={tabSelected === 'account'}
+                onClick={() => handleTabChange('account')}
+              >
+                <User />
+                <span>Account</span>
+              </Tab>
+              <Tab 
+                selected={tabSelected === 'payment-methods'}
+                onClick={() => handleTabChange('payment-methods')}
+              >
+                <CreditCards /> 
+                <span>Payment Methods</span>
+              </Tab>
+              <Tab 
+                selected={tabSelected === 'subscriptions'}
+                onClick={() => handleTabChange('subscriptions')}
+              > 
+                <RefreshCircle />
+                <span>Subscriptions</span>
+              </Tab>
+              { appState.supervisedSession && (
+                  appState.supervisedSession.role === "admin" ||
+                  appState.supervisedSession.role === "developer" 
+                )
+                ? <Tab 
+                  selected={tabSelected === 'developer'}
+                  onClick={() => handleTabChange('developer')}
                 > 
-                  <RefreshCircle />
-                  <span>Subscriptions</span>
+                  <Code />
+                  <span>Developer</span>
                 </Tab>
-                { appState.supervisedSession && (
-                    appState.supervisedSession.role === "admin" ||
-                    appState.supervisedSession.role === "developer" 
-                  )
-                  ? <Tab 
-                    selected={tabSelected === 'developer'}
-                    onClick={() => handleTabChange('developer')}
-                  > 
-                    <Code />
-                    <span>Developer</span>
-                  </Tab>
-                  : null 
-                }
-              </Tabs>
-            </div> 
-            <div>
+                : null 
+              }
+            </Tabs>
+            <Flex direction="column" grow={1} gap={24}>
               {tabSelected === 'account' && (
                 <AccountSettings />
               )}
               {tabSelected === 'payment-methods' && (
-                <div>
+                <>
                   <h2>Payment Methods</h2>
                   <p>Manage your payment methods here.</p>
-                </div>
+                </>
               )}
               {tabSelected === 'subscriptions' && (
-                <div>
+                <>
                   <h2>Subscriptions</h2>
                   <p>Manage your subscriptions here.</p>
-                </div>
+                </>
               )}  
               {(tabSelected === 'developer' && (
                 appState.supervisedSession && (
@@ -126,12 +126,9 @@ const Settings = () => {
                   appState.supervisedSession.role === "developer"
                 )
               )) && (
-                <div>
-                  <h2>Developer</h2>
-                  <p>Manage your developer credentials here.</p>
-                </div>
+                <DeveloperSettings />
               )}  
-            </div>
+            </Flex>
           </Flex>
         </LayoutContent>
       </LayoutMain>

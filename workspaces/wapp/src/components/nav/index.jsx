@@ -130,6 +130,7 @@ const NavUser = ({ ...props }) => {
           {isExpanded && (
             <Card
               ref={refs.setFloating}
+              variant="elevated"
               className="cs-nav-user-dropdown"
               style={floatingStyles}
               {...getFloatingProps()}

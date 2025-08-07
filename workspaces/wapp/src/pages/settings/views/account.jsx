@@ -13,7 +13,6 @@ import {
   KeyCommand,
   SunLight
 } from 'iconoir-react';
-import Card from '../../../components/card';
 
 const AccountSettings = () => {
   const [accountTheme, setAccountTheme] = useLocalState('accountTheme', 'system');
@@ -35,41 +34,46 @@ const AccountSettings = () => {
   }, [accountTheme]);
 
   return (
-    <div>
-      <h2>Account</h2>
-      <p>Manage your account settings here.</p>
-      {/* Additional account settings components can be added here */}
-      <h3>Theme Settings</h3>
-      <ButtonGroup>
-        <Button 
-          variant={accountTheme === "system" ? "filled" : "outlined"} 
-          size="small" 
-          onClick={() => handleThemeChange('system')}
-        >
-          <KeyCommand />
-          <span>
-            System settings
-          </span>
-        </Button>
-        <Button 
-          variant={accountTheme === "light" ? "filled" : "outlined"} 
-          size="small" 
-          onClick={() => handleThemeChange('light')}
-        >
-          <SunLight />
-          Light
-        </Button>
-        <Button 
-          variant={accountTheme === "dark" ? "filled" : "outlined"} 
-          size="small" 
-          onClick={() => handleThemeChange('dark')}
-        >
-          <HalfMoon />
-          Dark
-        </Button>
-      </ButtonGroup>
-      {/* More buttons or actions can be added as needed */}
-    </div>
+    <>
+      <section>
+        <h2>Account</h2>
+        <p>Manage your account settings here.</p>
+      </section>
+      <section>
+        <h3>Theme Settings</h3>
+        <Flex direction="column" gap={12}>
+          <p>Choose your preferred theme for the application.</p>
+          <ButtonGroup>
+            <Button 
+              variant={accountTheme === "system" ? "filled" : "outlined"} 
+              size="small" 
+              onClick={() => handleThemeChange('system')}
+            >
+              <KeyCommand />
+              <span>
+                System
+              </span>
+            </Button>
+            <Button 
+              variant={accountTheme === "light" ? "filled" : "outlined"} 
+              size="small" 
+              onClick={() => handleThemeChange('light')}
+            >
+              <SunLight />
+              Light
+            </Button>
+            <Button 
+              variant={accountTheme === "dark" ? "filled" : "outlined"} 
+              size="small" 
+              onClick={() => handleThemeChange('dark')}
+            >
+              <HalfMoon />
+              Dark
+            </Button>
+          </ButtonGroup>
+        </Flex>
+      </section>
+    </>
   );
 };
 

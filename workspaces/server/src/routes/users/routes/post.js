@@ -4,7 +4,7 @@ const logr = new Logr()
 
 const post = (req, res) => {
   logr.info('users.post()')
-  logr.data(req.body)
+  logr.data(JSON.stringify(req.body))
   try {
     return model.postUser(req.body).then(
       (data) => {

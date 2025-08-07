@@ -72,7 +72,7 @@ const Input = ({ label="Label", type="text", prefix=null, suffix=null, onChange=
         {label}
       </InputLabel>
       <InputContainer>
-        {props.prefix && <span>{props.prefix}</span>}
+        {prefix && <span>{prefix}</span>}
         {type === 'textarea' 
           ? <textarea 
             {...props}
@@ -103,7 +103,7 @@ const Input = ({ label="Label", type="text", prefix=null, suffix=null, onChange=
             onChange={onChange} 
           />
         }
-        {props.suffix && <span>{props.suffix}</span>}
+        {suffix && <span>{suffix}</span>}
       </InputContainer>
       <InputMessage>
         {props.message}

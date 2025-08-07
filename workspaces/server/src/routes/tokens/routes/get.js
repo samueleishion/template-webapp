@@ -3,9 +3,10 @@ const Logr = require('logr-js')
 const logr = new Logr()
 
 const getAll = (req, res) => {
-  logr.info('users.getAll()')
+  logr.info('tokens.getAll()')
   logr.data(JSON.stringify(req.query))
-  return model.getUsers(req.query).then(
+
+  return model.getTokens(req.query).then(
     (data) => {
       res.status(200).json(data)
     },
@@ -17,15 +18,15 @@ const getAll = (req, res) => {
 }
 
 const getById = (req, res) => {
-  logr.info('users.getById()')
-  logr.data(req.param.id)
+  logr.info('tokens.getById()')
+  logr.data(req.params.tokenId)
 
-  if (!req.params.id) {
-    logr.error('User ID is required')
-    return res.status(400).json({ error: 'User ID is required' })
+  if (!req.params.tokenId) {
+    logr.error('Token ID is required')
+    return res.status(400).json({ error: 'Token ID is required' })
   }
 
-  return model.getUserById(req.params.id).then(
+  return model.getTokenById(req.params.tokenId).then(
     (data) => {
       res.status(200).json(data)
     },

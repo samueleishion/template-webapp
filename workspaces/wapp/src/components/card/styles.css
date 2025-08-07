@@ -11,7 +11,14 @@
   flex-direction: column;
   background-color: var(--cs-card-background-color);
   border-radius: var(--cs-card-border-radius);
-  box-shadow: var(--cs-card-box-shadow);
   padding: var(--cs-card-padding);
   gap: var(--cs-card-gap);
+}
+
+.cs-card-elevated {
+  box-shadow: var(--cs-card-box-shadow);
+}
+
+.cs-card-outlined {
+  border: var(--cs-app-border-width) solid var(--cs-app-border-color);
 }
