@@ -9,65 +9,19 @@ import {
 } from '../../../data/api';
 
 /* Shared Components */ 
+import Card from '../../../components/card';
 import Button from '../../../components/button';
 import Dialog from '../../../components/dialog';
 import Flex from '../../../components/flex';
-import Input, { InputContainer, InputField } from '../../../components/input';
+import Input from '../../../components/input';
+import { InputSecret } from '../../../components/input/bundles/';
 
 /* Assets */
 import {
-  Copy,
-  Eye,
-  EyeClosed,
   KeyPlus,
-  Trash,
-  Xmark
+  Trash
 } from 'iconoir-react';
-import Card from '../../../components/card';
-import './developer-styles.css'
-
-const TokenKeyInput = ({ value }) => {
-  const [appState, dispatch] = useContext(useAppState);
-  const [showKey, setShowKey] = useState(false);
-
-  return (
-    <InputContainer style={{ padding: '9px', gap: '9px' }}>
-      <InputField
-        type={showKey ? "text" : "password"}
-        value={value}
-        readOnly
-        aria-label="Token key"
-        style={{ fontFamily: 'monospace' }}
-      />
-      <Button 
-        variant="outlined" 
-        size="small"
-        round
-        aria-label="View token key"
-        onClick={() => {
-          setShowKey(!showKey);
-        }}
-      >
-        { showKey ? <EyeClosed /> : <Eye /> }
-      </Button>
-      <Button 
-        variant="outlined" 
-        size="small"
-        round
-        aria-label="Copy token key"
-        onClick={() => {
-          navigator.clipboard.writeText(value);
-          dispatch({
-            type: actionTypes.setAlertOn,
-            payload: { type: 'success', message: 'Token key copied to clipboard!' }
-          });
-        }}
-      >
-        <Copy /> 
-      </Button>
-    </InputContainer>
-  );
-}
+import './developer.css'
 
 const DeveloperSettings = () => {
   const [appState, dispatch] = useContext(useAppState);
@@ -205,7 +159,15 @@ const DeveloperSettings = () => {
                   <strong style={{ fontFamily: 'monospace' }}>{token.name}</strong>
                 </Flex>
                 <Flex direction="row" justify="flex-end" align="center" gap={6} style={{ flexGrow: 1 }}>
-                  <TokenKeyInput value={token.key} />
+                  <InputSecret 
+                    value={token.key} 
+                    onCopy={() => {
+                      dispatch({
+                        type: actionTypes.setAlertOn,
+                        payload: { type: 'success', message: 'Token key copied to clipboard!' }
+                      });
+                    }}
+                  />
                 </Flex>
                 <Flex direction="row" justify="flex-end" align="center" gap={6}>
                   <Button

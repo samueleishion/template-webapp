@@ -5,5 +5,5 @@
 }
 
 .cs-token-container:hover {
-  background-color: light-dark(var(--cs-color-grays-light), var(--cs-color-grays-darker));
+  background-color: light-dark(var(--cs-color-grays-lighterer), var(--cs-color-grays-darkest));
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 /* Global State */
 import useAppState, { actionTypes } from '../../data/app-state';
@@ -29,6 +29,7 @@ import {
 
 /* Local Modules */ 
 import UserTable from './user-table';
+import TokenTable from './token-table';
 
 const Admin = () => {
   const [appState, dispatch] = useContext(useAppState);
@@ -56,9 +57,18 @@ const Admin = () => {
             >
               Users
             </Tab>
+            <Tab
+              selected={tabSelected === 'tokens'} 
+              onClick={() => setTabSelected('tokens')}
+            >
+              Tokens
+            </Tab>
           </Tabs>
           {tabSelected === 'users' && (
             <UserTable />
+          )}
+          {tabSelected === 'tokens' && (
+            <TokenTable />
           )}
         </LayoutContent>
       </LayoutMain>

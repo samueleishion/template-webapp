@@ -36,6 +36,11 @@ async function authTokenMiddleware (req, res, next) {
       return res.status(401).json({ error: 'Invalid or expired token' })
     }
 
+    if (found[0].status === 'locked') {
+      logr.error('Token is locked')
+      return res.status(403).json({ error: 'Token is locked' })
+    }
+
     // Token is valid
     next()
   } catch (err) {

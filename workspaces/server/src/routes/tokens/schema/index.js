@@ -14,6 +14,11 @@ const TokenSchema = new Schema({
   userId: {
     type: String,
     required: true
+  },
+  status: {
+    type: String,
+    enum: ['active', 'locked'],
+    default: 'active'
   }
 }, {
   timestamps: true

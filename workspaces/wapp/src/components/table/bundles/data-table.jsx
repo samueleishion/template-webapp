@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 
 /* Shared Components */
 import Card from '../../card';
@@ -40,7 +41,9 @@ const DataTable = ({ summary=null, data=[], columns=[], ...props }) => {
   }
 
   // Extract column labels
-  const columnLabels = columns.map(col => col.label);
+  useEffect(() => {
+    console.log("DataTable:useEffect([data])", data);
+  }, [data]);
 
   // Render the table
   return (
