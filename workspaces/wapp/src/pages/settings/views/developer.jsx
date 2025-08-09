@@ -9,7 +9,7 @@ import {
 } from '../../../data/api';
 
 /* Shared Components */ 
-import Card from '../../../components/card';
+import Card, { CardList, CardListItem } from '../../../components/card';
 import Button from '../../../components/button';
 import Dialog from '../../../components/dialog';
 import Flex from '../../../components/flex';
@@ -21,7 +21,6 @@ import {
   KeyPlus,
   Trash
 } from 'iconoir-react';
-import './developer.css'
 
 const DeveloperSettings = () => {
   const [appState, dispatch] = useContext(useAppState);
@@ -50,7 +49,6 @@ const DeveloperSettings = () => {
           return;
         }
         
-        console.log("Fetched tokens:", data);
         setTokens(data);
       }
     );
@@ -151,10 +149,11 @@ const DeveloperSettings = () => {
       <h3>Tokens</h3>
       <Flex direction="column" gap={12}>
         <p>Manage your developer tokens here.</p>
-        <Card variant={"outlined"} style={{ padding: '6px', gap: '9px' }}>
+        {/* <Card variant={"outlined"} style={{ padding: '6px', gap: '9px' }}> */}
+        <CardList>
           {tokens.length > 0 ? (
-            tokens.map(token => (
-              <Flex direction="row" justify="space-between" align="center" gap={9} className="cs-token-container" key={token._id}>
+            tokens.map((token, i) => (
+              <CardListItem key={i}>
                 <Flex style={{ flexGrow: 1 }}>
                   <strong style={{ fontFamily: 'monospace' }}>{token.name}</strong>
                 </Flex>
@@ -182,12 +181,14 @@ const DeveloperSettings = () => {
                     <Trash />
                   </Button>
                 </Flex>
-              </Flex>
+              {/* </Flex> */}
+              </CardListItem>
             ))
           ) : (
             <p>No tokens available.</p>
           )}
-        </Card>
+        {/* </Card> */}
+        </CardList>
         <div>
           <Button 
             variant="outlined" 

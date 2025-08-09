@@ -1,9 +1,0 @@
-.cs-token-container {
-  background-color: var(--cs-app-background);
-  padding: 6px 12px; 
-  border-radius: var(--cs-app-border-radius);
-}
-
-.cs-token-container:hover {
-  background-color: light-dark(var(--cs-color-grays-lighterer), var(--cs-color-grays-darkest));
-}

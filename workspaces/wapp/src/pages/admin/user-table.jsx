@@ -139,6 +139,7 @@ const UserTable = () => {
           return;
         }
         
+        console.log("UserTable.fetchUsers()", data);
         setData(data
           .map(user => ({
             _id: user._id,

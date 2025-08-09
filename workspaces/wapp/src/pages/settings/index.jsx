@@ -29,6 +29,7 @@ import {
 /* Internal Modules */
 import AccountSettings from './views/account';
 import DeveloperSettings from './views/developer';
+import PaymentMethodsSettings from './views/payment-methods';
 
 /* Assets */
 import {
@@ -109,10 +110,7 @@ const Settings = () => {
                 <AccountSettings />
               )}
               {tabSelected === 'payment-methods' && (
-                <>
-                  <h2>Payment Methods</h2>
-                  <p>Manage your payment methods here.</p>
-                </>
+                <PaymentMethodsSettings />
               )}
               {tabSelected === 'subscriptions' && (
                 <>

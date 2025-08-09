@@ -5,7 +5,6 @@ const ENV_DEFAULTS = {
   "ENV": "DEV",
   "API_URL": "http://localhost:4830/api",
   "API_TOKEN_KEY": "",
-  "API_TOKEN_SECRET": "",
   "GOOGLE_AUTH_KEY": "",
 }; 
 

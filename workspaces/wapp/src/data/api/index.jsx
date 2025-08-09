@@ -62,13 +62,36 @@ export const updateUser = (userId, userData, callback) => {
     });
 }
 
+export const getPaymentMethods = (params, callback) => {
+  operator.get(`/users/${params.userId}/payment-methods`)
+    .then(response => {
+      console.log("API.getPaymentMethods()", response);
+      if (response.status === 200) {
+        callback(null, response.data);
+      } else if (response.status === 404) {
+        callback(null, response.data || []);
+      } else {
+        callback(new Error(`Error fetching payment methods: ${response.status}`));
+      }
+    })
+    .catch(error => {
+      console.log("API.getPaymentMethods():error", error);
+      if (error.response && error.response.status === 404) {
+        callback(null, []);
+        return;
+      }
+      
+      callback(error);
+    });
+};
+
 export const getTokens = (params, callback) => {
   operator.get('/tokens', { params })
     .then(response => {
       if (response.status === 200) {
         callback(null, response.data);
       } else {
-        callback(new Error(`Error fetching usetokensrs: ${response.status}`));
+        callback(new Error(`Error fetching user tokens: ${response.status}`));
       }
     })
     .catch(error => {
@@ -83,7 +106,7 @@ export const postTokens = (data, callback) => {
       if (response.status === 201) {
         callback(null, response.data);
       } else {
-        callback(new Error(`Error creating user: ${response.status}`));
+        callback(new Error(`Error creating user tokens: ${response.status}`));
       }
     })
     .catch(error => {
@@ -97,7 +120,7 @@ export const updateToken = (userId, userData, callback) => {
       if (response.status === 200) {
         callback(null, response.data);
       } else {
-        callback(new Error(`Error updating token: ${response.status}`));
+        callback(new Error(`Error updating user token: ${response.status}`));
       }
     })
     .catch(error => {
@@ -111,7 +134,7 @@ export const deleteToken = (tokenId, callback) => {
       if (response.status === 200) {
         callback(null, response.data);
       } else {
-        callback(new Error(`Error deleting token: ${response.status}`));
+        callback(new Error(`Error deleting user token: ${response.status}`));
       }
     })
     .catch(error => {

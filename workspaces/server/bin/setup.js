@@ -8,8 +8,9 @@ ENV_DEFAULTS = {
   "MONGODB_DB": "db-csuite",
   "MONGODB_USER": "",
   "MONGODB_PASS": "",
+  "STRIPE_KEY": "",
   "CERTIFICATE_PATH": "",
-  "CERTIFICATE_PASS": ""
+  "CERTIFICATE_PASS": "",
 }; 
 
 if (

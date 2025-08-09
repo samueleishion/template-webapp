@@ -159,7 +159,6 @@ const TokenTable = () => {
           return;
         }
         
-        console.log("Fetched tokens:", data);
         setTokens(data);
       }
     );

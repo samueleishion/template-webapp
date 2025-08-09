@@ -18,7 +18,6 @@ const AccountSettings = () => {
   const [accountTheme, setAccountTheme] = useLocalState('accountTheme', 'system');
   
   const handleThemeChange = (theme) => {
-    console.log("AccountSettings.handleThemeChange()", theme);
     setAccountTheme(theme);
   }
 
@@ -30,7 +29,6 @@ const AccountSettings = () => {
     } else {
       document.documentElement.setAttribute('data-theme', accountTheme);
     }
-    console.log("AccountSettings:useEffect([accountTheme])", accountTheme);
   }, [accountTheme]);
 
   return (

@@ -40,11 +40,6 @@ const DataTable = ({ summary=null, data=[], columns=[], ...props }) => {
     columns = columns.map(col => ({ label: col, sortable: false }));
   }
 
-  // Extract column labels
-  useEffect(() => {
-    console.log("DataTable:useEffect([data])", data);
-  }, [data]);
-
   // Render the table
   return (
     <Table summary={summary} {...props}>

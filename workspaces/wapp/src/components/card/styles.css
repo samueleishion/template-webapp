@@ -22,3 +22,30 @@
 .cs-card-outlined {
   border: var(--cs-app-border-width) solid var(--cs-app-border-color);
 }
+
+/* Card List */ 
+:root {
+  --cs-card-list-gap: 9px; 
+  --cs-card-list-padding: 6px; 
+
+  --cs-card-list-item-background: var(--cs-app-background);
+  --cs-card-list-item-gap: 6px; 
+  --cs-card-list-item-padding: 6px 12px; 
+  --cs-card-list-item-hover-background: light-dark(var(--cs-color-grays-lighterer), var(--cs-color-grays-darkest));
+}
+
+.cs-card-list {
+  padding: var(--cs-card-list-padding);
+  gap: var(--cs-card-list-gap); 
+}
+
+.cs-card-list-item {
+  background-color: var(--cs-card-list-item-background);
+  border-radius: var(--cs-app-border-radius);
+  gap: var(--cs-card-list-item-gap); 
+  padding: var(--cs-card-list-item-padding); 
+}
+
+.cs-card-list-item:hover {
+  background-color: var(--cs-card-list-item-hover-background); 
+}
