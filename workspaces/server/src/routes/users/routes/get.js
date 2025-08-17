@@ -59,7 +59,7 @@ const getById = (req, res) => {
 }
 
 const getByIdPaymentMethods = (req, res) => {
-  logr.info('users.getPaymentMethods()')
+  logr.info('users.getByIdPaymentMethods()')
   logr.data(req.params)
 
   if (!req.params.id) {
@@ -73,11 +73,8 @@ const getByIdPaymentMethods = (req, res) => {
       return res.status(404).json({ error: 'User not found' })
     }
 
-    // const paymentMethods = stripe.paymentMethods.list({
-    //   customer: user.stripe.id,
-    //   type: 'card'
-    // })
     logr.data(user)
+    // @TODO update method to use Stripe API
     return stripe.paymentMethods.list({
       customer: user.stripe.id,
       type: 'card'
