@@ -1,20 +1,16 @@
-import { useContext, useEffect } from 'react'; 
-
-/* Global State */
-// import useAppState, { actionTypes } from '../../data/app-state';
-
 /* Shared Components */
 import Button from '../../components/button';
 
 /* Icons */ 
 import { Xmark } from 'iconoir-react';
 
+/* Local modules */ 
+import AlertManager from './manager';
+
 /* Assets */
 import './styles.css';
 
 const Alert = ({ type="", onClick=() => {}, ...props }) => {
-  // const [appState, dispatch] = useContext(useAppState);
-
   return (
     <div 
       {...props} 
@@ -36,3 +32,8 @@ const Alert = ({ type="", onClick=() => {}, ...props }) => {
 }
 
 export default Alert;
+
+export { 
+  Alert,
+  AlertManager 
+};

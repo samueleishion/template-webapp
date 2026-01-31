@@ -1,5 +1,6 @@
 :root {
-  --cs-color-primary-lighter: #c9ebf1;
+  --cs-color-primary-lightest: rgba(100, 215, 195, 0.2);
+  --cs-color-primary-lighter: #c9f2f0;
   --cs-color-primary-light: #8be8e1;
   --cs-color-primary: #64d7c3; 
   --cs-color-primary-dark: #59b3a9; 
@@ -10,7 +11,7 @@
   --cs-color-alternate: rgb(215, 108, 163); 
 
   --cs-color-grays-lightest: #f3f2f0;
-  --cs-color-grays-lighterest: #e2e1de; 
+  --cs-color-grays-lighterer: #e2e1de; 
   --cs-color-grays-lighter: #dbdad9;
   --cs-color-grays-light: #cccbc9;
   --cs-color-grays: #afaeac;
@@ -43,18 +44,22 @@
   --cs-message-info-dark: #59b2b2;
   --cs-message-info-darker: #3f8484;
 
-  --cs-action-filled-text: var(--cs-color-grays-darker); 
-  --cs-action-filled: var(--cs-color-primary);
-  --cs-action-filled-hover: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
-  --cs-action-filled-focus: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
-  --cs-action-filled-active: light-dark(var(--cs-color-primary-dark), var(--cs-color-primary-dark));  
-  --cs-action-filled-disabled: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
+  --cs-action-text: var(--cs-color-grays-darker); 
+  --cs-action: var(--cs-color-primary);
+  --cs-action-hover: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
+  --cs-action-focus: light-dark(var(--cs-color-primary-light), var(--cs-color-primary-light));
+  --cs-action-active: light-dark(var(--cs-color-primary-dark), var(--cs-color-primary-dark));  
+  --cs-action-disabled: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-dark));
 
-  --cs-app-background: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-darkerer));
+  --cs-app-animation-duration: 0.1s;
+  --cs-app-background: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkerer));
+  --cs-app-border-color: light-dark(var(--cs-color-grays-lighter), var(--cs-color-grays-darker));
+  --cs-app-border-radius: 6px;
+  --cs-app-border-width: 1px;
+  --cs-app-box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.2);
   --cs-app-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-lighter));
   --cs-app-font-family: system-ui, sans-serif;
   --cs-app-font-size: 16px;
   --cs-app-font-weight: 400;
   --cs-app-line-height: 1.5;
-  --cs-app-animation-duration: 0.1s;
 }

@@ -1,4 +1,3 @@
-const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 const dotenv = require('dotenv').config() 
@@ -10,6 +9,7 @@ const Logr = require('logr-js');
 const mongoose = require('mongoose');
 const path = require('path');
 const redirectToHttps = require('./src/middleware/redirect-https');
+const authTokenMiddleware = require('./src/middleware/auth-tokens');
 
 // Set environment variables
 const {
@@ -28,13 +28,14 @@ const logr = new Logr()
 // Load routes 
 const testEndpoints = require('./src/routes/test');
 const usersEndpoints = require('./src/routes/users');
+const tokensEndpoints = require('./src/routes/tokens');
 
 // Initialize Express app
 const app = express();
 let certificate = null;
 
 // Connect to MongoDB
-mongoose.connect(`mongodb://${MONGODB_HOST}:${MONGODB_PORT}/csuite`, {
+mongoose.connect(`mongodb://${MONGODB_HOST}:${MONGODB_PORT}/template`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   dbName: MONGODB_DB,
@@ -53,11 +54,12 @@ if (ENV === 'PROD') {
 }
 
 // Middleware setup
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(compression());
 app.use(cors());
 app.use(helmet());
+app.use(authTokenMiddleware);
 
 // Define public routes 
 app.get('/', (req, res) => {
@@ -68,6 +70,7 @@ app.get('/', (req, res) => {
 // Define API routes
 app.use('/api', testEndpoints);
 app.use('/api', usersEndpoints);
+app.use('/api', tokensEndpoints);
 
 // 404 error handling
 app.all('/{*splat}', (req, res) => {

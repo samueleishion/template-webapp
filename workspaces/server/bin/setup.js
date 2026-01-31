@@ -5,11 +5,12 @@ ENV_DEFAULTS = {
   "PORT": 4830,
   "MONGODB_HOST": "localhost",
   "MONGODB_PORT": 27017,
-  "MONGODB_DB": "db-csuite",
+  "MONGODB_DB": "db-template",
   "MONGODB_USER": "",
   "MONGODB_PASS": "",
+  "STRIPE_KEY": "",
   "CERTIFICATE_PATH": "",
-  "CERTIFICATE_PASS": ""
+  "CERTIFICATE_PASS": "",
 }; 
 
 if (

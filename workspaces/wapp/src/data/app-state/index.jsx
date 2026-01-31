@@ -1,5 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 
+// comment out to reset local storage
+// window.localStorage.setItem('cs-userSession', null);
+// window.localStorage.setItem('cs-supervisedSession', null);
 const initialUserSession = window.localStorage.getItem('userSession');
 const initialSupervisedSession = window.localStorage.getItem('supervisedSession');
 
@@ -21,11 +24,10 @@ export const initialState = {
   userSession: initialUserSession === "null" ? null : JSON.parse(initialUserSession),
   supervisedSession: initialSupervisedSession === "null" ? null : JSON.parse(initialSupervisedSession),
   loading: [],
-  dialogOpen: false,
-  dialogContent: null,
-  alertOpen: false,
-  alertType: 'info',
-  alertMessage: 'hello world',
+  alerts: [], 
+  alertOpen: false, // @TODO delete this
+  alertType: 'info',// @TODO delete this
+  alertMessage: 'hello world',// @TODO delete this
   reload: false,
   // Modules
   analysisListRequest: [],
@@ -35,6 +37,8 @@ export const initialState = {
 export const reducer = (state, action) => {
   let _loading;
   let _loadingIndex;
+  let _alerts;
+  let _alertIndex;
 
   switch (action.type) {
     case actionTypes.setUserSession:
@@ -61,24 +65,24 @@ export const reducer = (state, action) => {
       }
 
       return { ...state, loading: _loading };
-    case actionTypes.setDialogOn:
-      return { ...state, dialogOpen: true, dialogContent: action.payload };
-    case actionTypes.setDialogOff:
-      return { ...state, dialogOpen: false, dialogContent: null };
     case actionTypes.setAlertOn:
-      return {
-        ...state,
-        alertOpen: true,
-        alertType: action.payload.type,
-        alertMessage: action.payload.message
-      };
+      _alerts = [...state.alerts];
+      _alertIndex = _alerts.findIndex(alert => alert.id === action.payload.id);
+
+      if (_alertIndex < 0) {
+        _alerts.push(action.payload);
+      }
+
+      return { ...state, alerts: _alerts };
     case actionTypes.setAlertOff:
-      return {
-        ...state,
-        alertOpen: false,
-        alertType: 'info',
-        alertMessage: ''
-      };
+      _alerts = [...state.alerts];
+      _alertIndex = _alerts.findIndex(alert => alert.id === action.payload.id);
+  
+      if (_alertIndex >= 0) {
+        _alerts.splice(_alertIndex, 1);
+      }
+
+      return { ...state, alerts: _alerts };
     case actionTypes.setReload:
       return { ...state, reload: action.payload };
     default:

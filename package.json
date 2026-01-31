@@ -1,24 +1,32 @@
 {
-  "name": "csuite",
+  "name": "template-webapp",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:wapp": "cd workspaces/wapp; npm run dev",
+    "dev:server": "cd workspaces/server; npm run dev",
+    "start": "npm-run-all --parallel start:*",
+    "start:wapp": "cd workspaces/wapp; npm run start",
+    "start:server": "cd workspaces/server; npm run start",
     "prepare": "npm-run-all --parallel prepare:*",
     "prepare:husky": "husky install",
+    "prepare:wapp": "cd workspaces/wapp; npm run prepare",
+    "prepare:server": "cd workspaces/server; npm run prepare",
     "lint": "cd workspaces/server; npm run lint",
     "test": "exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samueleishion/csuite.git"
+    "url": "git+https://github.com/samueleishion/template-webapp.git"
   },
   "author": "samueleishion",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/samueleishion/csuite/issues"
+    "url": "https://github.com/samueleishion/template-webapp/issues"
   },
-  "homepage": "https://github.com/samueleishion/csuite#readme",
+  "homepage": "https://github.com/samueleishion/template-webapp#readme",
   "workspaces": [
     "workspaces/*"
   ],

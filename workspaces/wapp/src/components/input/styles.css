@@ -1,0 +1,81 @@
+:root {
+  --cs-input-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkest));
+  --cs-input-border-radius: var(--cs-app-border-radius);
+  --cs-input-border-color: var(--cs-app-border-color);
+  --cs-input-border-width: var(--cs-app-border-width);
+  --cs-input-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-light));
+
+  --cs-input-label-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-grays-light));
+  --cs-input-label-font-size: 0.9rem;
+
+  --cs-input-hover-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darker));
+  --cs-input-hover-border-color: light-dark(var(--cs-color-grays-dark), var(--cs-color-grays-light));
+  --cs-input-focus-background-color: light-dark(var(--cs-color-grays-lighterer), var(--cs-color-grays-darker));
+  --cs-input-focus-border-color: light-dark(var(--cs-color-grays-darker), var(--cs-color-primary));
+  --cs-input-disabled-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkest));
+  --cs-input-disabled-border-color: light-dark(var(--cs-color-grays-light), var(--cs-color-grays-dark));
+  --cs-input-readonly-background-color: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darkest));
+  --cs-input-readonly-border-color: var(--cs-app-border-color);
+}
+
+.cs-input-container {
+  display: flex;
+  flex-direction: row;
+  /* width: 100%; */
+  padding: 6px; 
+  background-color: var(--cs-input-background-color);
+  border-radius: var(--cs-input-border-radius);
+  border: var(--cs-input-border-width) solid var(--cs-input-border-color);
+  transition: all var(--cs-app-animation-duration);
+}
+
+.cs-input-container:has(select.cs-input) {
+  padding: 0px; 
+}
+
+.cs-input-container select.cs-input {
+  padding: 9px; 
+}
+
+.cs-input-container:hover {
+  background-color: var(--cs-input-hover-background-color);
+  border-color: var(--cs-input-hover-border-color); 
+}
+
+.cs-input-container:focus-within {
+  background-color: var(--cs-input-focus-background-color);
+  border-color: var(--cs-input-focus-border-color);
+} 
+
+.cs-input-label {
+  font-size: var(--cs-input-label-font-size);
+  color: var(--cs-input-label-color);
+  /* margin-bottom: 4px; */
+  align-self: flex-start;
+  justify-self: flex-start;
+}
+
+.cs-input {
+  width: 100%;
+  background-color: transparent;
+  color: var(--cs-input-color);
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  border-width: 0px; 
+  cursor: text; 
+}
+
+select.cs-input {
+  cursor: pointer;
+}
+
+.cs-input:disabled {
+  cursor: not-allowed;
+}
+
+.cs-input-container:has(.cs-input[readonly]) {
+  background-color: var(--cs-input-readonly-background-color);
+  border-style: dashed; 
+  border-color: var(--cs-input-readonly-border-color);
+}

@@ -95,6 +95,11 @@ const Login = ({ render=null, ...props }) => {
       return;
     }
 
+    dispatch({
+      type: actionTypes.setLoadingOn,
+      payload: 'fetchUser'
+    });
+
     // get user 
     getUsers({
       email: email
@@ -107,6 +112,10 @@ const Login = ({ render=null, ...props }) => {
             type: 'error',
             message: `Error fetching user: ${error.message}`
           }
+        });
+        dispatch({
+          type: actionTypes.setLoadingOff,
+          payload: 'fetchUser'
         });
         clearSession();
         return;
@@ -129,10 +138,18 @@ const Login = ({ render=null, ...props }) => {
                 message: `Error creating user: ${err.message}`
               }
             });
+            dispatch({
+              type: actionTypes.setLoadingOff,
+              payload: 'fetchUser'
+            });
             clearSession();
             return;
           }
           validateUser(resp2);
+          dispatch({
+            type: actionTypes.setLoadingOff,
+            payload: 'fetchUser'
+          });
         });
       } else {
         // google profile has changed, update 
@@ -142,37 +159,49 @@ const Login = ({ render=null, ...props }) => {
             obj2.hasOwnProperty(key) && obj1[key] === obj2[key]
           );
 
-        if (!shallowCompare(resp, profile)) {
+        if (!shallowCompare(resp[0], profile)) {
           profile['googleId'] = profile['id'];
           delete profile['id'];
-          updateUser({
-            id: resp._id
-          }, 
-          profile,
-          () => {
-            // get updated user data 
-            getUsers({
-              email: email
-            }, (error, resp2) => {
-              if (error) {
-                console.error("Error fetching updated user:", error);
+          updateUser(
+            resp[0]._id, 
+            profile,
+            () => {
+              // get updated user data 
+              getUsers({
+                email: email
+              }, (error, resp2) => {
+                if (error) {
+                  console.error("Error fetching updated user:", error);
+                  dispatch({
+                    type: actionTypes.setAlertOn,
+                    payload: {
+                      type: 'error',
+                      message: `Error fetching updated user: ${error.message}`
+                    }
+                  });
+                  dispatch({
+                    type: actionTypes.setLoadingOff,
+                    payload: 'fetchUser'
+                  });
+                  clearSession();
+                  return;
+                } 
                 dispatch({
-                  type: actionTypes.setAlertOn,
-                  payload: {
-                    type: 'error',
-                    message: `Error fetching updated user: ${error.message}`
-                  }
+                  type: actionTypes.setLoadingOff,
+                  payload: 'fetchUser'
                 });
-                clearSession();
-                return;
-              } 
-              validateUser(resp2);
-            });
-          });
+                validateUser(resp2);
+              });
+            }
+          );
         }
         // user is valid and google profile is up-to-date, set session 
         else {
           validateUser(resp);
+          dispatch({
+            type: actionTypes.setLoadingOff,
+            payload: 'fetchUser'
+          });
         }
       } 
     }); 
@@ -258,7 +287,7 @@ const Login = ({ render=null, ...props }) => {
 
   return (
     render === null || typeof render !== 'function'
-      ? appState.userSession
+      ? appState.userSession.role !== 'guest'
         ? <button onClick={logout}>
           Log out
         </button>

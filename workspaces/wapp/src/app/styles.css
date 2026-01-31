@@ -6,30 +6,12 @@
   color-scheme: light; 
 }
 
-.logo {
-  color: currentColor;
-  fill: currentColor;
-}
-
-a {
-  font-weight: 500;
-  color: var(--cs-action-filled);
-  text-decoration: inherit;
-}
-
-a:hover,
-a:focus-visible {
-  color: var(--cs-action-filled-hover);
-}
-
-a:active {
-  color: var(--cs-action-filled-active);
+html {
+  color-scheme: light dark;
 }
 
 html,
 body {
-  color-scheme: light dark; 
-
   background-color: var(--cs-app-background);
   color: var(--cs-app-color);
   font-family: var(--cs-app-font-family); 
@@ -45,9 +27,36 @@ body {
   inline-size: 100vw;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, h3, h4, h5, h6, p {
   margin: 0px; 
 }
 
+hr {
+  border: none;
+  border-top: var(--cs-app-border-width) solid var(--cs-app-border-color);
+  margin: 1em 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.cs-logo {
+  width: 240px;
+  height: 220px;
+  display: block;
+  margin: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

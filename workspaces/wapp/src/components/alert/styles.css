@@ -41,18 +41,18 @@
   * These styles apply to the alert component, including positioning, padding, and button styles.
   */
 .cs-alert {
-  position: fixed;
-  top: 81px;
-  right: 20px;
-  z-index: 1000;
+  position: relative; 
+  right: -200px; 
   padding: 10px 15px 10px 20px;
-  border-radius: 6px;
+  border-radius: var(--cs-app-border-radius);
   color: var(--cs-alert-info-color);
   background-color: var(--cs-alert-info-background); 
   display: flex; 
   align-items: center;
   justify-content: space-between;
   gap: 12px; 
+  transform: translateX(-200px);
+  transition: transform var(--cs-app-animation-duration);
 }
 
 .cs-alert .cs-button {
@@ -143,4 +143,20 @@
 .cs-alert-info .cs-button:active {
   background-color: var(--cs-alert-info-button-active-background);
   color: var(--cs-alert-info-button-hover-color);
+}
+
+/* 
+  * Alert Manager Styles
+  * This class is used to manage the alert container.
+  */
+.cs-alert-manager {
+  position: fixed;
+  top: 81px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 20px;
+  gap: 12px; 
 }

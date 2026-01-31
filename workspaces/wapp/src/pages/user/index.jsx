@@ -1,3 +1,10 @@
+import React, { useContext } from 'react';
+
+/* Global State */
+import useAppState, { actionTypes } from '../../data/app-state';
+
+/* Shared Components */
+import Button from '../../components/button';
 import Footer from '../../components/footer';
 import Layout, { 
   LayoutContent, 
@@ -5,34 +12,53 @@ import Layout, {
   LayoutHeader, 
   LayoutMain
 } from '../../components/layout';
+import Link from '../../components/link';
 import Login from '../../components/login';
+import Nav, {
+  NavLogo,
+  NavLinks,
+  NavUser
+} from '../../components/nav';
+import {
+  Tabs, 
+  Tab
+} from '../../components/tabs'; 
+
+/* Assets */
+// import appLogo from '../../assets/logo.svg';
 
 const User = () => {
+  const [appState, dispatch] = useContext(useAppState);
+
   return (
     <Layout>
       <LayoutHeader>
-        <nav>
-          <LayoutContent>
-            nav
+        <Nav>
+          <LayoutContent className="cs-nav-content">
+            {/* <NavLogo src={appLogo} alt="App Logo" width="57px" height="57px" /> */}
+                        <NavLogo alt="App Logo" />
+            <NavLinks>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/about">About</Link>
+              </li>
+            </NavLinks>
+            <NavUser />
           </LayoutContent>
-        </nav>
+        </Nav>
       </LayoutHeader>
       <LayoutMain>
         <LayoutContent>
           <h1>User Page</h1>
+          <Tabs>
+            <Tab selected>first</Tab>
+            <Tab>second</Tab>
+            <Tab>third</Tab>
+          </Tabs>
           <p>This is the user page content.</p>
-          <Login render={(userSession, login, logout) => (
-            <div>
-              {userSession ? (
-                <p>Welcome, {userSession.name}!</p>
-              ) : (
-                <p>Please log in to continue.</p>
-              )}
-              <button onClick={userSession ? logout : login}>
-                {userSession ? 'Log out' : 'Log in'}
-              </button>
-            </div>
-          )} />
+          <p>Welcome, {appState.userSession.name}!</p>
         </LayoutContent>
       </LayoutMain>
       <LayoutFooter>

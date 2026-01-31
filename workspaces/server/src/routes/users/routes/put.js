@@ -4,9 +4,9 @@ const logr = new Logr()
 
 const putById = (req, res) => {
   logr.info('users.putById()')
-  logr.data(req.body)
+  logr.data(JSON.stringify(req.body))
 
-  if (!req.params._id) {
+  if (!req.params.id) {
     return res.status(400).json({ error: 'User ID is required' })
   }
 

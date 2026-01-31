@@ -3,7 +3,7 @@ import './styles.css';
 const Footer = () => {
   return (
     <footer className="cs-footer">
-      <p>&copy; 2025 Your Company</p>
+      <p>&copy; {new Date().getFullYear()} Your Company</p>
     </footer>
   );
 }

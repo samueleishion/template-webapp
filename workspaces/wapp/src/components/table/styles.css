@@ -1,0 +1,50 @@
+:root {
+  --cs-table-padding: 9px 15px;
+  --cs-table-text-align: left; 
+  --cs-table-border-color: var(--cs-app-border-color);
+  --cs-table-border-radius: var(--cs-app-border-radius);
+  --cs-table-border-width: var(--cs-app-border-width);
+  --cs-table-header-background: light-dark(var(--cs-color-grays-lightest), var(--cs-color-grays-darker));
+  --cs-table-header-color: light-dark(var(--cs-color-grays-dark), var(--cs-color-grays-lighter));
+  --cs-table-row-even-background: light-dark(var(--cs-color-grays-lighterest), var(--cs-color-grays-darker));
+  --cs-table-row-hover-background: light-dark(var(--cs-color-primary-lightest), var(--cs-color-grays-darkest));
+}
+
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--cs-table-border-radius);
+}
+
+.cs-table > thead {
+  border-radius: var(--cs-table-border-radius);
+}
+
+.cs-table th:first-of-type {
+  border-start-start-radius: var(--cs-table-border-radius); 
+}
+
+.cs-table th:last-of-type {
+  border-start-end-radius: var(--cs-table-border-radius); 
+}
+
+.cs-table th,
+.cs-table td {
+  padding: var(--cs-table-padding);
+  text-align: var(--cs-table-text-align);
+  border-bottom: var(--cs-table-border-width) solid var(--cs-table-border-color);
+}
+
+.cs-table th {
+  background-color: var(--cs-table-header-background);
+  color: var(--cs-table-header-color);
+  font-weight: bold;
+}
+
+.cs-table tr:nth-child(even) {
+  background-color: var(--cs-table-row-even-background);
+}
+
+.cs-table tr:hover {
+  background-color: var(--cs-table-row-hover-background);
+}

@@ -4,6 +4,7 @@ import fs from 'fs';
 const ENV_DEFAULTS = {
   "ENV": "DEV",
   "API_URL": "http://localhost:4830/api",
+  "API_TOKEN_KEY": "",
   "GOOGLE_AUTH_KEY": "",
 }; 
 

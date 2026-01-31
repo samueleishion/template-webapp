@@ -1,44 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const UserSchemaObject = require('./object')
 
-const UserSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  role: {
-    type: String,
-    required: true,
-    enum: ['user', 'admin', 'developer'],
-    default: 'user'
-  },
-  given_name: {
-    type: String,
-    required: false,
-    default: ''
-  },
-  family_name: {
-    type: String,
-    required: false,
-    default: ''
-  },
-  googleId: {
-    type: String,
-    required: false,
-    default: ''
-  },
-  picture: {
-    type: String,
-    required: false,
-    default: ''
-  }
-}, {
+const UserSchema = new Schema(UserSchemaObject, {
   timestamps: true
 })
 

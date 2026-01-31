@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="220" viewBox="0 0 240 220" fill="none" stroke="black" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="cs-logo">
+  <polygon points="120,20 20,200 220,200" fill="none" />
+  <line x1="120" y1="20" x2="120" y2="140" />
+  <line x1="20" y1="200" x2="120" y2="140" />
+  <line x1="220" y1="200" x2="120" y2="140" />
+  <circle cx="120" cy="140" r="3" />
+</svg>
