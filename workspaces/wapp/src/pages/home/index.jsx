@@ -40,7 +40,7 @@ const Home = ({ children }) => {
       </LayoutHeader>
       <LayoutMain>
         <LayoutContent>
-          <h1>C-Suite</h1>
+          <h1>Web App Template</h1>
           {/* <img src={appLogo} className="logo" alt="App Logo" /> */}
           <div style={{ display: 'flex', gap: '12px' }}>
             <Login render={(userSession, login, logout) => (

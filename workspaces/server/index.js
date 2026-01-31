@@ -35,7 +35,7 @@ const app = express();
 let certificate = null;
 
 // Connect to MongoDB
-mongoose.connect(`mongodb://${MONGODB_HOST}:${MONGODB_PORT}/csuite`, {
+mongoose.connect(`mongodb://${MONGODB_HOST}:${MONGODB_PORT}/template`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   dbName: MONGODB_DB,
